@@ -1,0 +1,976 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"i",
+				"initialization"
+			],
+			[
+				"course",
+				"course_had"
+			],
+			[
+				"pro",
+				"proposer"
+			],
+			[
+				"pr",
+				"proposer"
+			],
+			[
+				"ser",
+				"serializer"
+			],
+			[
+				"Ex",
+				"Exchange	class"
+			],
+			[
+				"ntu",
+				"ntust_exchange_check	function"
+			],
+			[
+				"da",
+				"datapack"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"order_",
+				"order_list"
+			],
+			[
+				"mode",
+				"mode_list	statement"
+			],
+			[
+				"cate",
+				"category_list"
+			],
+			[
+				"CardG",
+				"CardGroup	class"
+			],
+			[
+				"url",
+				"url_cur	statement"
+			],
+			[
+				"rever",
+				"reverse_lazy	import"
+			],
+			[
+				"cnos",
+				"console.log('$0');"
+			],
+			[
+				"per",
+				"perform_destroy"
+			],
+			[
+				"log",
+				"log_model_str"
+			],
+			[
+				"Card",
+				"CardGroup	import"
+			],
+			[
+				"drag_",
+				"drag_target"
+			],
+			[
+				"grabbed",
+				"grabbed_card"
+			],
+			[
+				"typ",
+				"typeof(${0:Object})	Object"
+			],
+			[
+				"dr",
+				"dragend	Event"
+			],
+			[
+				"list",
+				"listChunk"
+			],
+			[
+				"v",
+				"vocabulary"
+			],
+			[
+				"get",
+				"get_context_data"
+			],
+			[
+				"get_",
+				"get_object"
+			],
+			[
+				"card",
+				"card_group	module"
+			],
+			[
+				"car",
+				"card_group	module"
+			],
+			[
+				"Ca",
+				"CardModifySerializer	class"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"new",
+				"newcompare	statement"
+			],
+			[
+				"com",
+				"compareSample	function"
+			],
+			[
+				"newr",
+				"newref	forstmt"
+			],
+			[
+				"newRE",
+				"newRefRelative	statement"
+			],
+			[
+				"ch",
+				"chunk"
+			],
+			[
+				"sma",
+				"sample2	statement"
+			],
+			[
+				"c",
+				"chunk	param"
+			],
+			[
+				"wr",
+				"writelines	function"
+			],
+			[
+				"w",
+				"writelines	function"
+			],
+			[
+				"pixels",
+				"pixelsMap	statement"
+			],
+			[
+				"fin",
+				"findAround	function"
+			],
+			[
+				"pix",
+				"pixelsMap	statement"
+			],
+			[
+				"map",
+				"mapRow	statement"
+			],
+			[
+				"pxielsM",
+				"pixelsMap"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"pa",
+				"padding-right"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"innerH",
+				"innerHeight	Window"
+			],
+			[
+				"res",
+				"resize	Event"
+			],
+			[
+				"setT",
+				"setTimeout(${0:func}, delay)	Window"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"check",
+				"checkbox-height"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"tetx",
+				"text-align"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"rea",
+				"readline	function"
+			],
+			[
+				"header",
+				"headers	statement"
+			],
+			[
+				"app",
+				"applyTableURL	statement"
+			],
+			[
+				"hd",
+				"header"
+			],
+			[
+				"appl",
+				"applyTable	statement"
+			],
+			[
+				"join",
+				"joinonlinebeforeURL	statement"
+			],
+			[
+				"fullch",
+				"fullcheckURL	statement"
+			],
+			[
+				"view",
+				"viewstateGenerator"
+			],
+			[
+				"index",
+				"indexOf(${0:searchElement})	Array"
+			],
+			[
+				"b",
+				"bubbles	Event"
+			],
+			[
+				"ind",
+				"indexOf(${0:searchElement})	Array"
+			],
+			[
+				"sp",
+				"splice(${0:index}, howMany)	Array"
+			],
+			[
+				"mouse",
+				"mousemove	Event"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"displacement",
+				"displacementY"
+			],
+			[
+				"displcament",
+				"displacementX"
+			],
+			[
+				"displacemnet",
+				"displacementY"
+			],
+			[
+				"aler",
+				"alert(${0:message})	Window"
+			],
+			[
+				"touchedB",
+				"touchedBall"
+			],
+			[
+				"bak",
+				"background-color"
+			],
+			[
+				"len",
+				"length	Array"
+			],
+			[
+				"le",
+				"length	Array"
+			],
+			[
+				"displacemn",
+				"displacementX"
+			],
+			[
+				"l",
+				"length	Array"
+			],
+			[
+				"Math",
+				"Math.pow(${0:base}, exponent)	Math"
+			],
+			[
+				"cons",
+				"console.log('$0');"
+			],
+			[
+				"create",
+				"create(${0:proto})	Object"
+			],
+			[
+				"for",
+				"for of"
+			],
+			[
+				"wi",
+				"window	Window"
+			],
+			[
+				"inner",
+				"innerWidth	Window"
+			],
+			[
+				"getEl",
+				"getElementById(${0:id})	Element"
+			],
+			[
+				"doub",
+				"document.getElementsByName(${0:name})	Document"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"d",
+				"Draw"
+			],
+			[
+				"iner",
+				"innerWidth"
+			],
+			[
+				"in",
+				"innerHeight"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"wa",
+				"waveL"
+			],
+			[
+				"tmie",
+				"timeMeter"
+			],
+			[
+				"n",
+				"nSamplesToKeep"
+			],
+			[
+				"f",
+				"frequency"
+			],
+			[
+				"R",
+				"RC"
+			],
+			[
+				"del",
+				"deltaX	param"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "using UnityEngine;\nusing System.Collections;\n\npublic class apear : MonoBehaviour {\n	float size = 1;\n	float stackup = 0;\n	// Use this for initialization\n	void Start () {\n		size = transform.localScale.x;\n		transform.localScale = new Vector3(0,0,0);\n			\n	}\n	\n	// Update is called once per frame\n	void Update () {\n		if (stackup < size && size>stackup + size * Time.deltaTime * 3) {\n			stackup += size * Time.deltaTime * 3;\n		} else {\n			stackup = size;\n		}\n		transform.localScale = new Vector3 (\n			stackup,\n			stackup,\n			stackup\n			);\n	\n	}\n}\n",
+			"file": "Assets/TestScript/apear.cs",
+			"file_size": 540,
+			"file_write_time": 130883236140000000,
+			"settings":
+			{
+				"buffer_size": 540,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/OmniSharp.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/User/Python3.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/Python3.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/OmniSharp.sublime-build",
+					""
+				],
+				[
+					"Packages/User/OmniSharp.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/OmniSharp.sublime-build",
+					"ReBuild"
+				]
+			],
+			[
+				"Packages/User/OmniSharp.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "list",
+		"selected_items":
+		[
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"re",
+				"OmniSharpSublime: Reload Solution"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"reload",
+				"OmniSharpSublime: Reload Solution"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"package control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 475.0
+	},
+	"console":
+	{
+		"height": 135.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Himari/New Unity Project",
+		"/Users/Himari/New Unity Project/Assets"
+	],
+	"file_history":
+	[
+		"/Users/Himari/New Unity Project/New  Unity Project.sublime-project",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/C#.sublime-settings",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/OmniSharp.sublime-build",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Himari/Documents/Django/Active/Active/urls.py",
+		"/Users/Himari/iWorldNote/staff/views/card.py",
+		"/Users/Himari/iWorldNote/staff/serializer.py",
+		"/Users/Himari/iWorldNote/card/views/cardgroup.py",
+		"/Users/Himari/iWorldNote/card/urls/category.py",
+		"/Users/Himari/iWorldNote/card/urls/card.py",
+		"/Users/Himari/iWorldNote/card/views/category.py",
+		"/Users/Himari/iWorldNote/card/urls/cardgroup.py",
+		"/Users/Himari/iWorldNote/card/templates/category/list.html",
+		"/Users/Himari/iWorldNote/card/templates/cardgroup/list.html",
+		"/Users/Himari/iWorldNote/card/templates/card/list.html",
+		"/Users/Himari/iWorldNote/news/views.py",
+		"/Users/Himari/iWorldNote/news/templates/news/group_list.html",
+		"/Users/Himari/iWorldNote/news/templates/news/list.html",
+		"/Users/Himari/iWorldNote/news/templatetags/url_tool.py",
+		"/Users/Himari/iWorldNote/news/models.py",
+		"/Users/Himari/iWorldNote/card/views/card.py",
+		"/Users/Himari/iWorldNote/iworldnote/settings.py",
+		"/Users/Himari/iWorldNote/staff/rest_urls.py",
+		"/Users/Himari/iWorldNote/staff/Mixin.py",
+		"/Users/Himari/iWorldNote/card/templates/category/create.html",
+		"/Users/Himari/iWorldNote/staticfiles/staff/fieldChooser.css",
+		"/Users/Himari/iWorldNote/card/templates/cardgroup/create.html",
+		"/Users/Himari/iWorldNote/staff/views/news.py",
+		"/Users/Himari/iWorldNote/staticfiles/staff/fieldChooser.js",
+		"/Users/Himari/Desktop/untitled.html",
+		"/Users/Himari/iWorldNote/card/models/cardgroup.py",
+		"/Users/Himari/iWorldNote/api/views.py",
+		"/Users/Himari/iWorldNote/staff/views/card_group.py",
+		"/Users/Himari/iWorldNote/membership/models.py",
+		"/Users/Himari/iWorldNote/card/models/card.py",
+		"/Users/Himari/iWorldNote/news/urls.py",
+		"/Users/Himari/iWorldNote/staff/urls.py",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/Users/Himari/iWorldNote/card/templates/card/create.html",
+		"/Users/Himari/iWorldNote/iworldnote/urls.py",
+		"/Users/Himari/iWorldNote/membership/urls.py",
+		"/Users/Himari/iWorldNote/api/urls.py",
+		"/Users/Himari/Documents/Django/VideoStream/pages/models.py",
+		"/Users/Himari/Documents/Django/VideoStream/pages/admin.py",
+		"/Users/Himari/Documents/Django/Active/Active/settings.py",
+		"/Users/Himari/Documents/Django/VideoStream/pages/urls.py",
+		"/Users/Himari/Documents/Django/VideoStream/VideoStream/urls.py",
+		"/Users/Himari/Documents/JavaScript/PlayWithCanvas/newCanvas.js",
+		"/Users/Himari/Downloads/android-network-discovery-bbb895bf1bbd2b961b6124a14b8f5d98310011f9/src/info/lamatricexiste/network/Network/HardwareAddress.java",
+		"/Users/Himari/Desktop/ck 拷貝.psd.svg",
+		"/Users/Himari/Documents/PythonThing/eleVert/writetest.py",
+		"/Users/Himari/Documents/PythonThing/request.py",
+		"/Users/Himari/Documents/PythonThing/eleVert/sample.txt",
+		"/Users/Himari/Downloads/post.class",
+		"/Users/Himari/Downloads/FlatUIKit-1.6.1/Example/FlatUIKitExample/IconViewController.m",
+		"/Users/Himari/Downloads/crack-me-if-you-can/crack/res/values-in/strings.xml",
+		"/Users/Himari/Documents/JavaScript/HTML5_VideoPlayer/firstTest.html",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/videos/videos.html",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/videos/videos.css",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/videos/videos.js",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/page_scroll.html",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/index/index.css",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/index/index.html",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/index/index.js",
+		"/Users/Himari/Documents/JavaScript/nodeStream/server/streamserver.js",
+		"/Users/Himari/Documents/JavaScript/StreamSiteTemplate/index/connect.js",
+		"/Users/Himari/Documents/JavaScript/PlayWithCanvas/newCanvas.html",
+		"/Users/Himari/Documents/JavaScript/nodeStream/client/index.html",
+		"/Users/Himari/Documents/PythonThing/bot1/dsfrdc.py",
+		"/Users/Himari/Documents/PythonThing/ApplyBot/datatemplate.txt",
+		"/Users/Himari/Documents/PythonThing/ApplyBot/readlineTest.py",
+		"/Users/Himari/Documents/PythonThing/ApplyBot/dsfrdc.py",
+		"/Users/Himari/Documents/PythonThing/ApplyBot/data.txt",
+		"/Users/Himari/Documents/PythonThing/ApplyBot/readline.py",
+		"/Users/Himari/Documents/PythonThing/dsfrdc.html",
+		"/Users/Himari/Documents/PythonThing/reciveImage.py",
+		"/Users/Himari/Documents/PythonThing/dsfrdc.py",
+		"/Users/Himari/Documents/PythonThing/untitled",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Python.sublime-settings",
+		"/Users/Himari/Documents/JavaScript/PlayWithCanvas/CanvasReSize.html",
+		"/Users/Himari/Documents/JavaScript/PlayWithCanvas/membraneFuse.html",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Python3.sublime-build",
+		"/Users/Himari/Documents/JavaScript/test.html",
+		"/Users/Himari/Documents/getcharTest.cpp",
+		"/Users/Himari/Documents/JavaScript/Bump.html",
+		"/Users/Himari/Documents/JavaScript/Bump.js",
+		"/Users/Himari/Downloads/CommonEmitterAmplifier/CommonEmitterAmplifier/Calculate.cpp",
+		"/Users/Himari/Downloads/123.txt",
+		"/Users/Himari/Documents/JavaScript/forceDirected/forcedirected.html",
+		"/Users/Himari/Documents/JavaScript/forceDirected/d3.v3.min.js",
+		"/Users/Himari/Documents/JavaScript/forceDirected/dataSet.json",
+		"/Users/Himari/Documents/jts.java",
+		"/Users/Himari/Documents/PythonThing/math2.py",
+		"/Users/Himari/Documents/PythonThing/intergal1.py",
+		"/Users/Himari/Documents/test.py",
+		"/Users/Himari/Downloads/flat.icns-master/icns/sublime text 2.icns",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/Himari/Desktop/iStatMenu regcode",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"Awake",
+			"&",
+			"、",
+			"IsAdminUser",
+			"detail",
+			"card_detail",
+			"Card",
+			")",
+			",",
+			"url_add_para",
+			"td",
+			"cardgroup",
+			"include_words",
+			"cayegory",
+			"cardgroup",
+			"+i",
+			",",
+			"'",
+			"data",
+			"\"",
+			"remove",
+			"r",
+			"\"",
+			"= ",
+			"=",
+			",",
+			"each",
+			"parent",
+			"find",
+			"child",
+			",",
+			"press",
+			"keypre",
+			"li",
+			"di",
+			"Article",
+			"article",
+			"ArticleGorup",
+			"Article",
+			"Card",
+			"card",
+			"Card",
+			"CardGroup",
+			"cardgroup",
+			"CardGroup",
+			"card_group",
+			"Card",
+			"card",
+			"CardModifySerializer",
+			"auto",
+			"complet",
+			"stat",
+			";",
+			"intent",
+			"Prefs",
+			"mSave",
+			"' ,",
+			",",
+			"put",
+			":",
+			")",
+			"(",
+			"[",
+			"max",
+			":",
+			"3",
+			"5",
+			"]",
+			"=",
+			"8",
+			"sample",
+			"=",
+			"3",
+			"x",
+			"&",
+			"=&",
+			"2BkLUMAr2gvugHArqgvugHArugvugHAoDk19wJApTj494JApTj094JAtib6owLAsWi6cYI2CTEq",
+			"&",
+			"MySQLiteHelper",
+			"COLUMN_COMMENT",
+			"private",
+			"newMonth",
+			"&",
+			";\n",
+			"solid",
+			"article",
+			"img",
+			"inputScore",
+			"inputTitle",
+			"inputEmail3",
+			"panel",
+			"penel",
+			"panel",
+			"p",
+			"iframe",
+			"$('body').scrollTop()",
+			"this",
+			"sty",
+			"lor=",
+			"=",
+			"height:500px",
+			"col-md-offset-3 col-md-6",
+			"preview",
+			"png",
+			"AooooAKKKKACiii",
+			"div class=\"featured\"",
+			"box-sizing:border-box;",
+			"100",
+			"col-sm-offset-3 col-sm-3",
+			"col-md-offset-1 col-md-1",
+			"xm",
+			"hidden-sm",
+			"col-md-1",
+			"row",
+			"100",
+			"100px",
+			"col-md-3",
+			"panpel",
+			"\">",
+			">",
+			"leatest",
+			"reaedFromFile",
+			"''",
+			":",
+			"=",
+			"&",
+			"print(client.cookies)",
+			"PEP8"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/TestScript/apear.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								534,
+								534
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 24.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 177.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "New  Unity Project.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 222.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
