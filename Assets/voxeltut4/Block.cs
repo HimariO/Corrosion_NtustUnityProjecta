@@ -127,6 +127,7 @@ public class Block
         meshData.AddVertex(new Vector3(x - 0.5f, y + 0.5f, z - 0.5f));
         meshData.AddVertex(new Vector3(x - 0.5f, y - 0.5f, z - 0.5f));
 
+
         meshData.AddQuadTriangles();
         meshData.uv.AddRange(FaceUVs(Direction.west));
         return meshData;

@@ -35,6 +35,8 @@ public class Chunk : MonoBehaviour
         }
     }
 
+
+
     public Block GetBlock(int x, int y, int z)
     {
         if (InRange(x) && InRange(y) && InRange(z))
@@ -89,13 +91,17 @@ public class Chunk : MonoBehaviour
     // to the mesh and collision components
     void RenderMesh(MeshData meshData)
     {
-        filter.mesh.Clear();
+		//display mesh
+		filter.mesh.Clear();
         filter.mesh.vertices = meshData.vertices.ToArray();
         filter.mesh.triangles = meshData.triangles.ToArray();
 
         filter.mesh.uv = meshData.uv.ToArray();
+		filter.mesh.colors = meshData.colors.ToArray();
+//		print(meshData.colors.Count+":"+meshData.vertices.Count);
         filter.mesh.RecalculateNormals();
-
+		
+		//collider mesh
         coll.sharedMesh = null;
         Mesh mesh = new Mesh();
         mesh.vertices = meshData.colVertices.ToArray();

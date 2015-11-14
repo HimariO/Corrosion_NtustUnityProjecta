@@ -1,3 +1,8 @@
+/*
+ * This script is from the Unity 5 Standard Assets with edits from Devin Curry
+ * Search for changes tagged with the //DCURRY comment
+ * Watch the tutorial here: www.Devination.com
+ */
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,7 +16,10 @@ namespace UnityStandardAssets.CrossPlatformInput
 			// Options for which axes to use
 			Both, // Use both
 			OnlyHorizontal, // Only horizontal
-			OnlyVertical // Only vertical
+			OnlyVertical,
+			MouseXY,
+			MouseX,
+			MouseY// Only vertical
 		}
 
 		public int MovementRange = 100;
@@ -21,31 +29,29 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 		Vector3 m_StartPos;
 		bool m_UseX; // Toggle for using the x axis
-		bool m_UseY; // Toggle for using the Y axis
+		bool m_UseY;
+		bool m_UseMX; // Toggle for using the x axis
+		bool m_UseMY;// Toggle for using the Y axis
 		CrossPlatformInputManager.VirtualAxis m_HorizontalVirtualAxis; // Reference to the joystick in the cross platform input
 		CrossPlatformInputManager.VirtualAxis m_VerticalVirtualAxis; // Reference to the joystick in the cross platform input
 
-		void OnEnable()
+		void Start() //DCURRY: Changed to Start from OnEnable
 		{
+			m_StartPos = transform.position;
 			CreateVirtualAxes();
 		}
-
-        void Start()
-        {
-            m_StartPos = transform.position;
-        }
 
 		void UpdateVirtualAxes(Vector3 value)
 		{
 			var delta = m_StartPos - value;
 			delta.y = -delta.y;
 			delta /= MovementRange;
-			if (m_UseX)
+			if (m_UseX||m_UseMX)
 			{
 				m_HorizontalVirtualAxis.Update(-delta.x);
 			}
 
-			if (m_UseY)
+			if (m_UseY||m_UseMY)
 			{
 				m_VerticalVirtualAxis.Update(delta.y);
 			}
@@ -56,6 +62,8 @@ namespace UnityStandardAssets.CrossPlatformInput
 			// set axes to use
 			m_UseX = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyHorizontal);
 			m_UseY = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyVertical);
+			m_UseMX = (axesToUse == AxisOption.MouseX || axesToUse == AxisOption.MouseXY);
+			m_UseMY = (axesToUse == AxisOption.MouseY || axesToUse == AxisOption.MouseXY);
 
 			// create new axes based on axes to use
 			if (m_UseX)
@@ -68,6 +76,18 @@ namespace UnityStandardAssets.CrossPlatformInput
 				m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
 				CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
 			}
+
+			if (m_UseMY)
+			{
+				m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis("Mouse Y");
+				CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+			}
+
+			if (m_UseMX)
+			{
+				m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis("Mouse X");
+				CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
+			}
 		}
 
 
@@ -75,20 +95,21 @@ namespace UnityStandardAssets.CrossPlatformInput
 		{
 			Vector3 newPos = Vector3.zero;
 
-			if (m_UseX)
+			if (m_UseX | m_UseMX)
 			{
 				int delta = (int)(data.position.x - m_StartPos.x);
-				delta = Mathf.Clamp(delta, - MovementRange, MovementRange);
+				//delta = Mathf.Clamp(delta, - MovementRange, MovementRange); //DCURRY: Dont want to clamp individual axis
 				newPos.x = delta;
 			}
 
-			if (m_UseY)
+			if (m_UseY | m_UseMY)
 			{
 				int delta = (int)(data.position.y - m_StartPos.y);
-				delta = Mathf.Clamp(delta, -MovementRange, MovementRange);
+				//delta = Mathf.Clamp(delta, -MovementRange, MovementRange); //DCURRY: Dont want to clamp individual axis
 				newPos.y = delta;
 			}
-			transform.position = new Vector3(m_StartPos.x + newPos.x, m_StartPos.y + newPos.y, m_StartPos.z + newPos.z);
+			//DCURRY: ClampMagnitude to clamp in a circle instead of a square
+			transform.position = Vector3.ClampMagnitude(new Vector3(newPos.x, newPos.y, newPos.z), MovementRange) + m_StartPos;
 			UpdateVirtualAxes(transform.position);
 		}
 
@@ -105,11 +126,11 @@ namespace UnityStandardAssets.CrossPlatformInput
 		void OnDisable()
 		{
 			// remove the joysticks from the cross platform input
-			if (m_UseX)
+			if (m_UseX ||m_UseMX)
 			{
 				m_HorizontalVirtualAxis.Remove();
 			}
-			if (m_UseY)
+			if (m_UseY || m_UseMY)
 			{
 				m_VerticalVirtualAxis.Remove();
 			}

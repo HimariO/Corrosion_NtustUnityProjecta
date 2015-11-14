@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
+
 public class World : MonoBehaviour {
 
     public Dictionary<WorldPos, Chunk> chunks = new Dictionary<WorldPos, Chunk>();
@@ -17,7 +19,7 @@ public class World : MonoBehaviour {
 	
 	}
 
-    public void CreateChunk(int x, int y, int z)
+	public void CreateChunk(int x, int y, int z)
     {
         WorldPos worldPos = new WorldPos(x, y, z);
 //		print ("create chunk"+worldPos.ToString());
@@ -45,27 +47,14 @@ public class World : MonoBehaviour {
             {
 				for (int zi = 0; zi < chunk_size; zi++)
                 {
-//                    if (yi <= 7)
-//                    {
-//                        SetBlock(x + xi, y + yi, z + zi, new BlockGrass());
-//                    }
-//                    else
-//                    {
-                        SetBlock(x + xi, y + yi, z + zi, new BlockAir());
+					SetBlock(x + xi, y + yi, z + zi, new BlockAir());
                 }
             }
         }
 
-		List<WorldPos> setB = GeneratePillars(new WorldPos(x,y,z), Chunk.chunkSize);
-		print (setB[0].ToString());
-		for(int i=0;i<setB.Count;i++){
-			SetBlock(
-				setB[i].x,
-				setB[i].y,
-				setB[i].z,
-				new BlockGrass());
-		}
+//		SetBlockS(GeneratePillars(new WorldPos(x,y,z), Chunk.chunkSize));
     }
+
 
     public void DestroyChunk(int x, int y, int z)
     {
@@ -76,6 +65,7 @@ public class World : MonoBehaviour {
             chunks.Remove(new WorldPos(x, y, z));
         }
     }
+
 
     public Chunk GetChunk(int x, int y, int z)
     {
@@ -132,6 +122,36 @@ public class World : MonoBehaviour {
         }
     }
 
+	//cuurent this method are ""colorblock only""!
+	public void SetBlockS(List<WorldPos> coordList){
+
+		for(int i=0;i<coordList.Count;i++){
+			System.Random r = new System.Random();
+			Color c = new Color((float)r.NextDouble(),(float)r.NextDouble(),(float)r.NextDouble()); 
+			
+			SetBlock(
+				coordList[i].x,
+				coordList[i].y,
+				coordList[i].z,
+				new ColorBlock(c));
+		}
+	}
+
+	public void SetSpecalBlockS(List<WorldPos> coordList, BlockSpecial.Specal_type btype, BlockSpecial.Owner owner){
+		
+		for(int i=0;i<coordList.Count;i++){
+			System.Random r = new System.Random();
+			Color c = new Color((float)r.NextDouble(),(float)r.NextDouble(),(float)r.NextDouble()); 
+//			BlockSpecial a=new BlockSpecial(btype);
+			SetBlock(
+				coordList[i].x,
+				coordList[i].y,
+				coordList[i].z,
+				new BlockSpecial(btype, owner));
+		}
+	}
+
+
     void UpdateIfEqual(int value1, int value2, WorldPos pos)
     {
         if (value1 == value2)
@@ -142,38 +162,61 @@ public class World : MonoBehaviour {
         }
     }
 
-	List<WorldPos> GeneratePillars(WorldPos startpoint,int size){
-		int pillar_num = Random.Range (15, 30);
 
-		List<WorldPos> base_position = new List<WorldPos>();
-		for (int i=0; i<pillar_num; i++) {
-			WorldPos w = new WorldPos(
-				Random.Range(0,size),
-				(int)Random.Range(0,size*0.7f),
-				Random.Range(0,size)
-				);
-			w.extra = (int)Random.Range(3,6);
-			base_position.Add(w);
-		}
+//	List<WorldPos> GeneratePillars(WorldPos startpoint,int size){
+//		int pillar_num = Random.Range (15, 30);
+//
+//		List<WorldPos> base_position = new List<WorldPos>();
+//		for (int i=0; i<pillar_num; i++) {
+//			WorldPos w = new WorldPos(
+//				Random.Range(0,size),
+//				(int)Random.Range(0,size*0.7f),
+//				Random.Range(0,size)
+//				);
+//			w.extra = (int)Random.Range(3,6);
+//			base_position.Add(w);
+//		}
+//
+//		List<WorldPos> points = new List<WorldPos> ();
+//
+//		for (int i=0; i<base_position.Count; i++) {
+//			WorldPos base_point = base_position[i];
+//
+//			for(int h=0;h<base_point.y;h++){
+//				for(int x=0;x<base_point.extra;x++)
+//					for(int z=0;z<base_point.extra;z++){
+//					points.Add(
+//						new WorldPos(
+//						startpoint.x+base_point.x+x,
+//						startpoint.y+h,
+//						startpoint.z+base_point.z+z
+//						)
+//			       );
+//				}
+//			}
+//		}
+//
+//		return points;
+//	}
 
+	public void SpecialBlockEff(WorldPos position, BlockSpecial.Specal_type blocktype, BlockSpecial.Owner owner){
 		List<WorldPos> points = new List<WorldPos> ();
-
-		for (int i=0; i<base_position.Count; i++) {
-			WorldPos base_point = base_position[i];
-
-			for(int h=0;h<base_point.y;h++)
-				for(int x=0;x<base_point.extra;x++)
-					for(int z=0;z<base_point.extra;z++){
+		int range = 8;
+		for(int x=-range/2; x<range/2; x++)
+			for(int y=-range/2; y<range/2; y++)
+				for(int z=-range/2; z<range/2; z++){
+					
+				if(!(GetBlock(position.x+x, position.y+y, position.z+z) is BlockAir))
 					points.Add(
 						new WorldPos(
-						startpoint.x+base_point.x+x,
-						startpoint.y+h,
-						startpoint.z+base_point.z+z
+						position.x+x,
+						position.y+y,
+						position.z+z
 						)
-			       );
-				}
-		}
+					);
+			}
 
-		return points;
+		SetSpecalBlockS(points, blocktype, owner);
+
 	}
 }

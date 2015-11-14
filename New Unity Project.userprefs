@@ -1,13 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestScript/spawn_platform_player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SocketIO/Scripts/Test/TestSocketIO.cs">
     <Files>
-      <File FileName="Assets/TestScript/spawn_shell_player.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/spawn_platform_player.cs" Line="21" Column="45" />
-      <File FileName="Assets/voxeltut4/Modify.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/movment.cs" Line="1" Column="1" />
-      <File FileName="Assets/voxeltut4/Block.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/World.cs" Line="152" Column="3" />
+      <File FileName="Assets/TestScript/SpecCubeOnColl.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/BlockSpecial.cs" Line="1" Column="1" />
       <File FileName="Assets/voxeltut4/Chunk.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/PlayerTouchspecBlock.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/Modify.cs" Line="22" Column="79" />
+      <File FileName="Assets/voxeltut4/Terrain.cs" Line="1" Column="1" />
+      <File FileName="Assets/SocketIO/Scripts/Test/TestSocketIO.cs" Line="201" Column="49" />
+      <File FileName="Assets/TestScript/PlayerStatus.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/AutoAim.cs" Line="4" Column="1" />
+      <File FileName="Assets/TestScript/movment_joystick.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

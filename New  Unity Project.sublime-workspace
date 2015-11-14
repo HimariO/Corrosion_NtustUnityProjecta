@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"trans",
+				"transform	[class]"
+			],
+			[
 				"i",
 				"initialization"
 			],
@@ -436,13 +440,29 @@
 	"buffers":
 	[
 		{
-			"contents": "using UnityEngine;\nusing System.Collections;\n\npublic class apear : MonoBehaviour {\n	float size = 1;\n	float stackup = 0;\n	// Use this for initialization\n	void Start () {\n		size = transform.localScale.x;\n		transform.localScale = new Vector3(0,0,0);\n			\n	}\n	\n	// Update is called once per frame\n	void Update () {\n		if (stackup < size && size>stackup + size * Time.deltaTime * 3) {\n			stackup += size * Time.deltaTime * 3;\n		} else {\n			stackup = size;\n		}\n		transform.localScale = new Vector3 (\n			stackup,\n			stackup,\n			stackup\n			);\n	\n	}\n}\n",
 			"file": "Assets/TestScript/apear.cs",
-			"file_size": 540,
-			"file_write_time": 130883236140000000,
 			"settings":
 			{
-				"buffer_size": 540,
+				"buffer_size": 538,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 674,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{\n    \"folders\":\n    [\n        {\n            \"follow_symlinks\": true,\n            \"path\": \".\"\n        }\n    ],\n    \"solution_file\": \"./New Unity  Project.sln\"\n}",
+			"file": "New  Unity Project.sublime-project",
+			"file_size": 160,
+			"file_write_time": 130882289740000000,
+			"settings":
+			{
+				"buffer_size": 160,
 				"line_ending": "Unix"
 			}
 		}
@@ -523,6 +543,10 @@
 				"Package Control: List Packages"
 			],
 			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
 				"re",
 				"OmniSharpSublime: Reload Solution"
 			],
@@ -533,10 +557,6 @@
 			[
 				"reload",
 				"OmniSharpSublime: Reload Solution"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"remove ",
@@ -585,6 +605,8 @@
 	],
 	"file_history":
 	[
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/OmniSharpSublime.sublime-settings",
+		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/OmniSharp/OmniSharpSublime.sublime-settings",
 		"/Users/Himari/New Unity Project/New  Unity Project.sublime-project",
 		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/C#.sublime-settings",
 		"/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/OmniSharp.sublime-build",
@@ -857,15 +879,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 540,
+						"buffer_size": 538,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								534,
-								534
+								532,
+								532
 							]
 						],
 						"settings":
@@ -878,6 +900,64 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/Himari/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Seti_monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "New  Unity Project.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								160,
+								160
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -914,6 +994,14 @@
 		]
 	},
 	"menu_visible": true,
+	"output.CppYCM.4":
+	{
+		"height": 0.0
+	},
+	"output.CppYCM.6":
+	{
+		"height": 0.0
+	},
 	"output.exec":
 	{
 		"height": 177.0

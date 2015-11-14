@@ -23,6 +23,5 @@ public class apear : MonoBehaviour {
 			stackup,
 			stackup
 			);
-	
 	}
 }

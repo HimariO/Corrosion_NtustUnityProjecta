@@ -65,13 +65,13 @@ public static class Terrain
 		if (chunk == null)
 			return null;
 
-		int range = 2;
+		int range = 1;
 		WorldPos pos = GetBlockPos(hit, adjacent);
 		List<Vector3> prefab_pos = new List<Vector3>();
 
-		for (int x=-range; x<range; x++)
-			for (int y=-range; y<range; y++)
-				for (int z=-range; z<range; z++) {
+		for (int x=-range; x<=range; x++)
+			for (int y=-range; y<=range; y++)
+				for (int z=-range; z<=range; z++) {
 					
 					if(!(chunk.world.GetBlock(pos.x+x, pos.y+y, pos.z+z) is BlockAir)){
 						prefab_pos.Add(new Vector3(pos.x+x, pos.y+y, pos.z+z));
