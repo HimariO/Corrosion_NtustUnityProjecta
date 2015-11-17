@@ -34,6 +34,7 @@ using SocketIO;
 public class TestSocketIO : MonoBehaviour
 {
 	GameObject Player;
+	Rigidbody Player_rg;
 	public GameObject other_prefab;
 	private SocketIOComponent socket;
 	private Modify modify;
@@ -41,7 +42,12 @@ public class TestSocketIO : MonoBehaviour
 
 	const string ADD_USER = "adduser";
 	const string UPDATE_POS = "update_position";
+
+	public float movement_speed = 0.025f;
+	public float update_period = 0.025f;
+
 	public Dictionary<string,GameObject> other_players = new Dictionary<string,GameObject>();
+	public Dictionary<string,Dictionary<string,string>> update_query = new Dictionary<string,Dictionary<string,string>>();
 	float delay=0;
 
 	public void Start() 
@@ -49,6 +55,7 @@ public class TestSocketIO : MonoBehaviour
 		GameObject go = GameObject.Find("SocketIO");
 		socket = go.GetComponent<SocketIOComponent>();
 		Player = GameObject.FindGameObjectWithTag("Player");
+		Player_rg = Player.GetComponent<Rigidbody>();
 		modify = Player.GetComponent<Modify>();
 		world = GameObject.Find("WorldStartHere").GetComponent<World>();
 
@@ -69,12 +76,18 @@ public class TestSocketIO : MonoBehaviour
 
 	public void Update(){
 		delay +=Time.deltaTime;
-		if(delay >0.025f){
+		if(delay > update_period){
 			SendPosition();
 			delay=0;
 		}
-//		print("socktest updata");
+
+		foreach (KeyValuePair<string, Dictionary<string, string>> item in update_query){
+			PerformUpdateP(item.Value);
+//			Debug.Log(item.Value.ToString());
+		}
+
 	}
+
 
 	private IEnumerator BeepBoop()
 	{
@@ -92,7 +105,7 @@ public class TestSocketIO : MonoBehaviour
 		data["rota_y"] = ""+Player.transform.rotation.y;
 		data["rota_z"] = ""+Player.transform.rotation.z;
 		
-		socket.Emit(ADD_USER, new JSONObject(data));
+//		socket.Emit(ADD_USER, new JSONObject(data));
 		
 		// wait 2 seconds and continue
 		yield return new WaitForSeconds(2);
@@ -113,6 +126,9 @@ public class TestSocketIO : MonoBehaviour
 		data["rota_x"] = ""+Player.transform.rotation.x;
 		data["rota_y"] = ""+Player.transform.rotation.y;
 		data["rota_z"] = ""+Player.transform.rotation.z;
+		data["speed_x"] = ""+Player_rg.velocity.x;
+		data["speed_y"] = ""+Player_rg.velocity.y;
+		data["speed_z"] = ""+Player_rg.velocity.z;
 		
 		socket.Emit(UPDATE_POS, new JSONObject(data));
 		// wait 1 seconds and continue
@@ -186,30 +202,44 @@ public class TestSocketIO : MonoBehaviour
 //		e.data.ToDictionary
 	}
 
+
 	Dictionary<string, System.DateTime> lastTime;
+
 	public void UpdateOtherPos(SocketIOEvent e){
 //		Debug.Log("[SocketIO]  received: " + e.name + " " + e.data);
-		System.DateTime time=System.DateTime.Now;
-
 		Dictionary<string,string> data = e.data.ToDictionary();
+		data["excue_time"] = ""+0;
+		update_query[data["id"]] = data;
+
+		GameObject numi;
+		if(!other_players.TryGetValue(data["id"], out numi))
+			AddUserToWorld(e);update_query.Add(data["id"], data);
+//		numi.transform.position = new Vector3(float.Parse(data["p_x"]), float.Parse(data["p_y"]), float.Parse(data["p_z"]));
+	}
+
+	public void PerformUpdateP(Dictionary<string,string> data){
 		Vector3 n_position = new Vector3(float.Parse(data["p_x"]), float.Parse(data["p_y"]), float.Parse(data["p_z"]));
+		Vector3 n_velocity = new Vector3(float.Parse(data["speed_x"]), float.Parse(data["speed_y"]), float.Parse(data["speed_z"]));
 		Quaternion n_rotation = Quaternion.Euler(float.Parse(data["rota_x"]), float.Parse(data["rota_y"]), float.Parse(data["rota_z"]));
 		GameObject other;
-
+		
 		if(other_players.TryGetValue(data["id"], out other)){
 			Vector3 v= other.GetComponent<Rigidbody>().velocity;
-			other.transform.position = Vector3.SmoothDamp(
-				other.transform.position, 
-				n_position,
-				ref v,
-				0.025f);
-			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, Time.deltaTime*2f);
+//			other.GetComponent<Rigidbody>().velocity = v;
+//						other.transform.position = Vector3.SmoothDamp(
+//							other.transform.position, 
+//							n_position,
+//							ref n_velocity,
+//							float.Parse(data["excue_time"])/update_period);
+			data["excue_time"] = (float.Parse(data["excue_time"])+Time.deltaTime) + "";
+			if(float.Parse(data["excue_time"])<=update_period)
+				other.transform.position = Vector3.Lerp(other.transform.position, n_position, float.Parse(data["excue_time"])/update_period);
+			else
+				other.transform.position = Vector3.Lerp(other.transform.position, n_position, 1f);
+			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, Time.deltaTime);
 		}
-		else{
-			AddUserToWorld(e);
-		}
+		
 
-		lastTime[data["id"]] = time;
 	}
 
 

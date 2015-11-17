@@ -19,7 +19,7 @@ public class World : MonoBehaviour {
 	
 	}
 
-	public void CreateChunk(int x, int y, int z)
+	public void CreateChunk(int x, int y, int z, bool asworld_child = false)
     {
         WorldPos worldPos = new WorldPos(x, y, z);
 //		print ("create chunk"+worldPos.ToString());
@@ -32,6 +32,8 @@ public class World : MonoBehaviour {
                         Quaternion.Euler(Vector3.zero)
                     ) as GameObject;
 
+		if(asworld_child)
+			newChunkObject.transform.parent = transform;
 		//Getting Chunk.cs in Chunk Prefab.
         Chunk newChunk = newChunkObject.GetComponent<Chunk>();
 
