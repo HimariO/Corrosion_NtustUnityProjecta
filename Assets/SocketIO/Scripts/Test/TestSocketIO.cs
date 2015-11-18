@@ -236,7 +236,7 @@ public class TestSocketIO : MonoBehaviour
 				other.transform.position = Vector3.Lerp(other.transform.position, n_position, float.Parse(data["excue_time"])/update_period);
 			else
 				other.transform.position = Vector3.Lerp(other.transform.position, n_position, 1f);
-			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, Time.deltaTime);
+			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, 1f);
 		}
 		
 

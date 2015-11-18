@@ -19,4 +19,13 @@ public class PlayerStatus : MonoBehaviour {
 			transform.position = new Vector3(10f, 10f, 10f);
 		}
 	}
+
+	void OnCollisionEnter(Collision collision){
+	}
+
+	void OnTriggerEnter(Collider other) {
+		Debug.Log("ssse");
+	}
+
+
 }

@@ -440,10 +440,13 @@
 	"buffers":
 	[
 		{
+			"contents": "using UnityEngine;\nusing System.Collections;\n\npublic class apear : MonoBehaviour {\n	float size = 1;\n	float stackup = 0;\n	// Use this for initialization\n	void Start () {\n		size = transform.localScale.x;\n		transform.localScale = new Vector3(0,0,0);\n			\n	}\n	\n	// Update is called once per frame\n	void Update () {\n		if (stackup < size && size>stackup + size * Time.deltaTime * 3) {\n			stackup += size * Time.deltaTime * 3;\n		} else {\n			stackup = size;\n		}\n		transform.localScale = new Vector3 (\n			stackup,\n			stackup,\n			stackup\n			);\n		\n	}\n}\n",
 			"file": "Assets/TestScript/apear.cs",
+			"file_size": 538,
+			"file_write_time": 130913459460000000,
 			"settings":
 			{
-				"buffer_size": 538,
+				"buffer_size": 541,
 				"line_ending": "Unix"
 			}
 		},
@@ -879,15 +882,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 538,
+						"buffer_size": 541,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								532,
-								532
+								535,
+								535
 							]
 						],
 						"settings":
@@ -995,6 +998,10 @@
 	},
 	"menu_visible": true,
 	"output.CppYCM.4":
+	{
+		"height": 0.0
+	},
+	"output.CppYCM.5":
 	{
 		"height": 0.0
 	},

@@ -27,4 +27,8 @@ public class delete_aftercrush : MonoBehaviour {
 //			Destroy(col.gameObject);
 //		}
 	}
+
+	void OnTriggerEnter(Collider other) {
+		start_delete = true;
+	}
 }

@@ -21,9 +21,10 @@ public class movment_joystick : MonoBehaviour {
 	private Vector3 vector;
 	private Rigidbody BODY;
 	private GameObject rb;
+	private ProgressBar.ProgressRadialBehaviour proRadB;
+
 	[SerializeField]
 	private float fly_total_time=0f;
-	
 
 	bool touch_ground = true;
 	bool flying = false;
@@ -32,6 +33,7 @@ public class movment_joystick : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		BODY = GetComponent<Rigidbody>();
+		proRadB = GameObject.Find ("ProgressRadialHollow").GetComponent<ProgressBar.ProgressRadialBehaviour>();
 
 	}
 	
@@ -70,6 +72,7 @@ public class movment_joystick : MonoBehaviour {
 		transform.Rotate(Vector3.down * (-CrossPlatformInputManager.GetAxis("Mouse X"))*movingspeed/8);
 		show_HOr = CrossPlatformInputManager.GetAxis("Horizontal");
 		show_Ver =  CrossPlatformInputManager.GetAxis("Vertical ");
+		proRadB.SetFillerSizeAsPercentage((fly_time_lime-fly_total_time)/fly_time_lime*100);
 	}
 
 	void OnCollisionEnter(Collision collision){
