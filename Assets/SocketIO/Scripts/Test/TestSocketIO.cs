@@ -69,7 +69,6 @@ public class TestSocketIO : MonoBehaviour
 		socket.On("map_modify", ModifyMap);
 		socket.On ("set_specblock", SetSpecBlock);
 
-
 		StartCoroutine("BeepBoop");
 //		StartCoroutine("SendPosition");
 	}

@@ -22,7 +22,7 @@ public class MapFromScreenshot : MonoBehaviour {
 		world = GetComponent<World>();
 		analy = GetComponent<AnalyScreenShot>();
 
-		// GenFloatingIsand();
+//		 GenFloatingIsand();
 
 	}
 	
@@ -116,8 +116,8 @@ public class MapFromScreenshot : MonoBehaviour {
 			int x_Width = max_x - min_x;
 			int z_Length = max_z - min_z;
 
-			int pHeight = Random.Range(10, 30); //postion of this chunk in y
-			int chunkHeight = Random.Range(10, 20);
+			int pHeight = Random.Range(20, 25); //postion of this chunk in y
+			int chunkHeight = Random.Range(5, 10);
 			
 			int last_x = -1, last_z = -1;
 
@@ -128,7 +128,7 @@ public class MapFromScreenshot : MonoBehaviour {
 				for(int y=pHeight; y<pHeight+chunkHeight; y++){
 
 					//remove the sharp edge of floating isand
-					if((y==pHeight || y==pHeight+chunkHeight-1) ){
+					if((y==pHeight || y==pHeight+chunkHeight-1) && false ){
 						
 						if(x == max_x || x == min_x)
 							world.SetBlock(x,y,z, new BlockAir());

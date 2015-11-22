@@ -45,7 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TestScript\MapGenTest\AnalyScreenShot.js" />
+     <Compile Include="Assets\TestScript\MapGenTest\HSV2RGB2HSV.js" />
      <None Include="Assets\SocketIO\JSONObject\readme.txt" />
      <None Include="Assets\Shaders\UnityVC\StandardVC.shader" />
      <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />

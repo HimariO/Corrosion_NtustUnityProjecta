@@ -9,6 +9,7 @@ public class AnalyScreenShot : MonoBehaviour {
 	public int[,] r_edge_map;
 	public int[,,] r_color_map = new int[160,90,3];
 	Color[] pixels;
+	Texture2D copy;
 //	Texture2D after_process;
 	// Use this for initialization
 	void Start () {
@@ -17,27 +18,23 @@ public class AnalyScreenShot : MonoBehaviour {
 	
 
 //		TextureScale.Bilinear (screenshot, 90, 160);
-		pixels = screenshot.GetPixels();
+		copy = Instantiate(screenshot);
+		pixels = copy.GetPixels();
 		
 		for(int i=0; i<pixels.Length; i++){
 			r_color_map[(i/screenshot.width), i%screenshot.width,0] = (int)(pixels[i].r*255);
 			r_color_map[(i/screenshot.width), i%screenshot.width,1] =(int)(pixels[i].g*255);
 			r_color_map[i/screenshot.width, i%screenshot.width,2] =(int)(pixels[i].b*255);
 
-			int p = ((256 * 256 + (int)(pixels[i].r*256)) * 256 + (int)(pixels[i].b*256f)) * 256 + (int)(pixels[i].g*256);
-			int b = p % 256;
-			p = Mathf.FloorToInt(p / 256);
-			int g = p % 256;
-			p = Mathf.FloorToInt(p / 256);
-			int r = p % 256;
-			float l = (0.2126f * r / 255f) + 0.7152f * (g / 255f) + 0.0722f * (b / 255f);
-			Color c = new Color(l, l, l, 1);
-
 			float gray = pixels[i].grayscale;
-			pixels[i] = new Color(gray, gray, gray, pixels[i].a);
-//			pixels[i] = c;
+			pixels[i] = new Color(1f-gray, 1f-gray, 1f-gray, pixels[i].a);
 		}
-		AnalyTexture(pixels);
+		copy.SetPixels(pixels);
+		copy.Apply();
+		copy = ChangeTextureContrast(copy, 0.999f);
+		copy.Apply();
+
+		AnalyTexture(copy.GetPixels());
 
 		GetComponent<MapFromScreenshot>().GenMapBase();
 		GetComponent<MapFromScreenshot>().GenFloatingIsand();
@@ -52,12 +49,12 @@ public class AnalyScreenShot : MonoBehaviour {
 		Texture2D a= Instantiate(screenshot);
 		a.SetPixels(pixels);
 		a.Apply();
-//		GUI.DrawTexture(new Rect(0, 0, 180, 320), a);
+//		GUI.DrawTexture(new Rect(0, 0, 180, 320), copy);
 	}
 	
 
 	void AnalyTexture(Color[] colors){
-		float color_standar = 0.08f;
+		float color_standar = 0.15f;
 		int thershold = (int)(colors.Length*0.001f);
 
 		List<List<float[]>> pixel_data = new List<List<float[]>>(); //[y][x][hsv]
@@ -78,17 +75,18 @@ public class AnalyScreenShot : MonoBehaviour {
 		List<int[]> edge_position = new List<int[]>();
 		int[,] edge_map = new int[screenshot.height,screenshot.width]; //[y,x]
 
-		int[,] Lookup_Offset  = new int[,]{{1, 0}, {0, -1}, {1, -1}, {1, 1}, {0, 1}};
-
+		int[,] Lookup_Offset  = new int[,]{{1, 0}, {0, -1}, {0, 1}, {1, 1}, {1, -1}, {-1, 0}, {-1, -1}};
+		Debug.Log (Lookup_Offset.GetLength(0));
 		while(true){
 			edge_position.Clear();
 
 			for(int y=0; y<screenshot.height ;y++){
 				for(int x=0; x<screenshot.width ;x++){
+
 					float h = pixel_data[y][x][0], s = pixel_data[y][x][1], v = pixel_data[y][x][2];
 
 					for(int i=0; i<Lookup_Offset.GetLength(0); i++){
-						int[] vec = new int[]{Lookup_Offset[0,0], Lookup_Offset[0,1]};
+						int[] vec = new int[]{Lookup_Offset[i,0], Lookup_Offset[i,1]};
 						try{
 							float n_h = pixel_data[y+vec[1]][x+vec[0]][0];
 							float n_s = pixel_data[y+vec[1]][x+vec[0]][1];
@@ -119,9 +117,8 @@ public class AnalyScreenShot : MonoBehaviour {
 		List<HashSet<int[]>> edge_grouped = new List<HashSet<int[]>>();
 		while(edge_position.Count>0){
 			int[] coord = edge_position[0];
-
 			HashSet<int[]> group = FindAround(coord, new HashSet<int[]>{coord});
-			Debug.Log("group size:"+group.Count+"::"+thershold);
+
 			if(group.Count>thershold){
 				edge_grouped.Add(group);Debug.Log ("group count:"+edge_grouped.Count);
 			}
@@ -248,5 +245,40 @@ public class AnalyScreenShot : MonoBehaviour {
 		h *= 1f / 360f;
 		s = (dif / max) * 1f;
 		bb = max;
+	}
+
+
+	public static Texture2D ChangeTextureContrast(Texture2D originalTexture, float power) {
+		if(power<0f) power=1f;
+		Texture2D newTexture = new Texture2D(originalTexture.width, originalTexture.height, TextureFormat.RGBA32, false);
+		Color[] originalPixels = originalTexture.GetPixels(0);
+		Color[] newPixels = newTexture.GetPixels(0);
+		float[] avgColor = new float[3];
+		for (int i = 0; i < originalPixels.Length; i++) {
+			Color c = originalPixels[i];
+			avgColor[0]+=c.r;
+			avgColor[1]+=c.g;
+			avgColor[2]+=c.b;
+		}
+		avgColor[0] = avgColor[0] / originalPixels.Length;
+		avgColor[1] = avgColor[1] / originalPixels.Length;
+		avgColor[2] = avgColor[2] / originalPixels.Length;
+		
+		for (int i = 0; i < originalPixels.Length; i++) {
+			Color c = originalPixels[i];
+			float deltaR = c.r - avgColor[0];
+			float deltaG = c.g - avgColor[1];
+			float deltaB = c.b - avgColor[2];
+			deltaR = Mathf.Pow(Mathf.Abs(deltaR), power) * Mathf.Sign(deltaR);
+			deltaG = Mathf.Pow(Mathf.Abs(deltaG), power) * Mathf.Sign(deltaG);
+			deltaB = Mathf.Pow(Mathf.Abs(deltaB), power) * Mathf.Sign(deltaB);
+			newPixels[i] = new Color(avgColor[0] + deltaR, 
+			                         avgColor[1] + deltaG, 
+			                         avgColor[2] + deltaB, 
+			                         c.a);
+		}
+		newTexture.SetPixels(newPixels, 0);
+		newTexture.Apply();
+		return newTexture;
 	}
 }
