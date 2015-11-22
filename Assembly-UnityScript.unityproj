@@ -6,10 +6,10 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{79391AC5-8752-B4CC-F33F-BB9EB1094377}</ProjectGuid>
+	<ProjectGuid>{1753851C-AE59-909A-15AB-E3FFE34BC5A0}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
-	<AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+	<AssemblyName>Assembly-UnityScript</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -45,25 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\HandHeldCam.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
-     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
+     <Compile Include="Assets\TestScript\MapGenTest\AnalyScreenShot.js" />
      <None Include="Assets\SocketIO\JSONObject\readme.txt" />
      <None Include="Assets\Shaders\UnityVC\StandardVC.shader" />
      <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />
@@ -72,21 +54,19 @@
      <None Include="Assets\Shaders\UnityVC\UnityVC.cginc" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\Glow.shader" />
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{79391AC5-8752-B4CC-F33F-BB9EB1094377}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

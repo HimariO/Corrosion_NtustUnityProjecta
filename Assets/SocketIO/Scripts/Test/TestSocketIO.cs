@@ -209,6 +209,9 @@ public class TestSocketIO : MonoBehaviour
 //		Debug.Log("[SocketIO]  received: " + e.name + " " + e.data);
 		Dictionary<string,string> data = e.data.ToDictionary();
 		data["excue_time"] = ""+0;
+		data["start_x"] = data["p_x"];
+		data["start_y"] = data["p_y"];
+		data["start_z"] = data["p_z"];
 		update_query[data["id"]] = data;
 
 		GameObject numi;
@@ -219,8 +222,10 @@ public class TestSocketIO : MonoBehaviour
 
 	public void PerformUpdateP(Dictionary<string,string> data){
 		Vector3 n_position = new Vector3(float.Parse(data["p_x"]), float.Parse(data["p_y"]), float.Parse(data["p_z"]));
+		Vector3 n_ori_position = new Vector3(float.Parse(data["start_x"]), float.Parse(data["start_y"]), float.Parse(data["start_z"]));
 		Vector3 n_velocity = new Vector3(float.Parse(data["speed_x"]), float.Parse(data["speed_y"]), float.Parse(data["speed_z"]));
-		Quaternion n_rotation = Quaternion.Euler(float.Parse(data["rota_x"]), float.Parse(data["rota_y"]), float.Parse(data["rota_z"]));
+
+		Quaternion n_rotation = Quaternion.Euler(180*float.Parse(data["rota_x"]), 180*float.Parse(data["rota_y"]), 180*float.Parse(data["rota_z"]));
 		GameObject other;
 		
 		if(other_players.TryGetValue(data["id"], out other)){
@@ -233,10 +238,11 @@ public class TestSocketIO : MonoBehaviour
 //							float.Parse(data["excue_time"])/update_period);
 			data["excue_time"] = (float.Parse(data["excue_time"])+Time.deltaTime) + "";
 			if(float.Parse(data["excue_time"])<=update_period)
-				other.transform.position = Vector3.Lerp(other.transform.position, n_position, float.Parse(data["excue_time"])/update_period);
+				other.transform.position = Vector3.Lerp(n_ori_position, n_position, float.Parse(data["excue_time"])/update_period);
 			else
-				other.transform.position = Vector3.Lerp(other.transform.position, n_position, 1f);
-			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, 1f);
+				other.transform.position = Vector3.Lerp(n_ori_position, n_position, 1f);
+//			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, float.Parse(data["excue_time"])/update_period);
+			other.transform.rotation = n_rotation;
 		}
 		
 

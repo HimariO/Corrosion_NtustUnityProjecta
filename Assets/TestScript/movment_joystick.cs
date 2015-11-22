@@ -40,8 +40,15 @@ public class movment_joystick : MonoBehaviour {
 	// Update is called once per frame Vertical
 	void Update () {
 		speed = BODY.velocity;
-		if (CrossPlatformInputManager.GetAxis ("Vertical") !=0 || CrossPlatformInputManager.GetAxis ("Horizontal") != 0) {
-			if(speed.x < speed_cap && speed.z < speed_cap){
+		if (CrossPlatformInputManager.GetAxis ("Vertical") >0 || CrossPlatformInputManager.GetAxis ("Horizontal") > 0) {
+			if(speed.x < speed_cap && speed.z < speed_cap ){
+				vector = new Vector3 (transform.forward.x * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed, 0, transform.forward.z * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed);
+				BODY.AddForce (vector);
+				vector = new Vector3 (transform.right.x * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed, 0, transform.right.z * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed);
+				BODY.AddForce (vector);
+			}
+		}else if (CrossPlatformInputManager.GetAxis ("Vertical") <0 || CrossPlatformInputManager.GetAxis ("Horizontal") < 0) {
+			if(speed.x > -speed_cap && speed.z > -speed_cap ){
 				vector = new Vector3 (transform.forward.x * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed, 0, transform.forward.z * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed);
 				BODY.AddForce (vector);
 				vector = new Vector3 (transform.right.x * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed, 0, transform.right.z * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed);
@@ -53,7 +60,7 @@ public class movment_joystick : MonoBehaviour {
 		if (CrossPlatformInputManager.GetAxis ("Mouse Y") != 0) {
 //			flying = true;
 			if(fly_total_time<fly_time_lime){
-				if(speed.y < speed_cap ){
+				if(Mathf.Abs(speed.y) < speed_cap ){
 				vector = new Vector3 (0, transform.up.y * CrossPlatformInputManager.GetAxis ("Mouse Y") * jump_muti, 0);
 				BODY.AddForce (vector);
 				fly_total_time += Time.deltaTime;
@@ -62,7 +69,7 @@ public class movment_joystick : MonoBehaviour {
 		}
 		else{
 			if(fly_total_time>0 && !flying)
-				fly_total_time -= Time.deltaTime*2;
+				fly_total_time -= Time.deltaTime;
 			else if(fly_total_time<0 && !flying){
 				fly_total_time = 0f;
 			}

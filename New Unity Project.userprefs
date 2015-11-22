@@ -1,9 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ProgressBar/Script/ProgressRadialBehaviour.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestScript/MapGenTest/AnalyScreenShot.cs">
     <Files>
-      <File FileName="Assets/TestScript/movment_joystick.cs" Line="47" Column="28" />
-      <File FileName="Assets/ProgressBar/Script/ProgressRadialBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/MapGenTest/MapFromScreenshot.cs" Line="25" Column="25" />
+      <File FileName="Assets/TestScript/MapGenTest/AnalyScreenShot.cs" Line="167" Column="6" />
+      <File FileName="Assets/TestScript/movment_joystick.cs" Line="1" Column="1" />
+      <File FileName="Assets/SocketIO/Scripts/Test/TestSocketIO.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/AutoAim.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

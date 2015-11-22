@@ -35,6 +35,7 @@ public class camFollow : MonoBehaviour
 		
 		// difference in orientations
 		float rotationDiff = Mathf.DeltaAngle(cameraAngle, playerAngle);
+		rotationDiff = 0f;
 		
 		// rotate around target by time-sensitive difference between these angles
 		transform.RotateAround(transform.position, Vector3.up, rotationDiff);
