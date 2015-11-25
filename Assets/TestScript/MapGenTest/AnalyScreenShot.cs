@@ -38,6 +38,7 @@ public class AnalyScreenShot : MonoBehaviour {
 
 		GetComponent<MapFromScreenshot>().GenMapBase();
 		GetComponent<MapFromScreenshot>().GenFloatingIsand();
+		enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -55,7 +56,7 @@ public class AnalyScreenShot : MonoBehaviour {
 
 	void AnalyTexture(Color[] colors){
 		float color_standar = 0.15f;
-		int thershold = (int)(colors.Length*0.001f);
+		int thershold = (int)(colors.Length*0.005f);
 
 		List<List<float[]>> pixel_data = new List<List<float[]>>(); //[y][x][hsv]
 
@@ -120,14 +121,33 @@ public class AnalyScreenShot : MonoBehaviour {
 			HashSet<int[]> group = FindAround(coord, new HashSet<int[]>{coord});
 
 			if(group.Count>thershold){
-				edge_grouped.Add(group);Debug.Log ("group count:"+edge_grouped.Count);
+				edge_grouped.Add(group);
 			}
-			try{edge_position.Remove(coord);}catch{}
 
-			foreach(int[] p in group)
-				try{edge_position.Remove(p);}catch{continue;}
+			try{
+				edge_position.Remove(coord);}
+			catch{
+				Debug.Log("remove fail");
+			}
+
+			Debug.Log("before:"+edge_position.Count+"group:"+group.Count);
+			foreach(int[] p in group){
+				try{
+					foreach(int[] arr in edge_position){
+						if(p[0] == arr[0] && p[1] == arr[1]){
+							edge_position.Remove(arr);
+							break;
+						}
+					}
+				}
+				catch{
+					Debug.Log("remove fail in group");
+				}
+			}
+			Debug.Log("after:"+edge_position.Count);
 		}
 
+		Debug.Log("find group:"+edge_grouped.Count);
 		r_edge_group = edge_grouped;
 
 	}
@@ -135,7 +155,7 @@ public class AnalyScreenShot : MonoBehaviour {
 
 	HashSet<int[]> FindAround(int[] start_pos, HashSet<int[]> camefrom){
 		//FindAround({x,y}, list[{x,y},{x,y}...all edge coordinate], list[{x,y},...edges alreay go through])
-		int[,] offset  = new int[,]{{1, 0}, {0, -1}, {-1, 0}, {0, 1}};
+		int[,] offset  = new int[,]{{1, 0}, {0, -1}, {-1, 0}, {0, 1}, {-1, 1}, {-1, -1}, {1, -1}, {1, 1}};
 		HashSet<int[]> AllPos = new HashSet<int[]>{start_pos};
 		int x = start_pos[0], y = start_pos[1];
 		
@@ -170,7 +190,23 @@ public class AnalyScreenShot : MonoBehaviour {
 	}
 
 
+	List<int[]> removeDup(List<int[]> all, HashSet<int[]> ele){
+		List<int[]> result = new List<int[]>();
+		foreach(int[] arr in all){
+			bool repeat = false;
+			foreach(int[] earr in ele){
+				if(earr[0] == arr[0] && earr[1] == arr[1]){
+					repeat = true;
+					break;
+				}
+			}
 
+			if(!repeat)
+				result.Add(arr);
+		}
+
+		return result;
+	}
 //	HashSet<int[]> FindAround(int[] start_pos, int[,] edge_map, HashSet<int[]> camefrom){
 //		//FindAround({x,y}, list[{x,y},{x,y}...all edge coordinate], list[{x,y},...edges alreay go through])
 //		int[,] offset  = new int[,]{{1, 0}, {0, -1}, {-1, 0}, {0, 1}};

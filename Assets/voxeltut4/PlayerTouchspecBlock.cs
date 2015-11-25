@@ -28,7 +28,6 @@ public class PlayerTouchspecBlock : MonoBehaviour {
 
 		foreach(ContactPoint cp in collision.contacts){
 			Block block = world.GetBlock((int)cp.point.x, (int)cp.point.y, (int)cp.point.z);
-			Debug.Log(block.GetType());
 
 			if(block is BlockSpecial){
 				BlockSpecial t = (BlockSpecial)block;

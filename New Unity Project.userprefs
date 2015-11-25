@@ -2,31 +2,28 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestScript/MapGenTest/AnalyScreenShot.cs">
     <Files>
-      <File FileName="Assets/TestScript/MapGenTest/MapFromScreenshot.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/MapGenTest/AnalyScreenShot.cs" Line="97" Column="26" />
+      <File FileName="Assets/TestScript/MapGenTest/MapFromScreenshot.cs" Line="24" Column="2" />
+      <File FileName="Assets/TestScript/MapGenTest/AnalyScreenShot.cs" Line="137" Column="37" />
       <File FileName="Assets/TestScript/movment_joystick.cs" Line="1" Column="1" />
       <File FileName="Assets/SocketIO/Scripts/Test/TestSocketIO.cs" Line="1" Column="1" />
       <File FileName="Assets/TestScript/AutoAim.cs" Line="1" Column="1" />
-      <File FileName="Assets/voxeltut4/Modify.cs" Line="16" Column="1" />
+      <File FileName="Assets/voxeltut4/Modify.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/MapGenTest/DataBucket.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/PlayerTouchspecBlock.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>n_h</Value>
-          <Value>n_s</Value>
-          <Value>n_v</Value>
-          <Value>v</Value>
-          <Value>s</Value>
-          <Value>h</Value>
-          <Value>x</Value>
-          <Value>y</Value>
-          <Value>vec</Value>
+          <Value>group</Value>
+          <Value>p</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/Himari/New Unity Project/Assets/TestScript/MapGenTest/MapFromScreenshot.cs" line="127" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

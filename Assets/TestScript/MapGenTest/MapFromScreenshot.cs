@@ -21,9 +21,7 @@ public class MapFromScreenshot : MonoBehaviour {
 		GameObject temp;
 		world = GetComponent<World>();
 		analy = GetComponent<AnalyScreenShot>();
-
-//		 GenFloatingIsand();
-
+	
 	}
 	
 	// Update is called once per frame
@@ -87,9 +85,9 @@ public class MapFromScreenshot : MonoBehaviour {
 		}
 	}
 
+	float time=0f;
 
 	public void GenFloatingIsand(){
-
 
 		foreach(HashSet<int[]> notgroups in analy.r_edge_group){
 			int[][] groups = notgroups.ToArray();
@@ -116,7 +114,7 @@ public class MapFromScreenshot : MonoBehaviour {
 			int x_Width = max_x - min_x;
 			int z_Length = max_z - min_z;
 
-			int pHeight = Random.Range(20, 25); //postion of this chunk in y
+			int pHeight = Random.Range(10, 40); //postion of this chunk in y
 			int chunkHeight = Random.Range(5, 10);
 			
 			int last_x = -1, last_z = -1;
