@@ -37,7 +37,7 @@ public class AnalyScreenShot : MonoBehaviour {
 		AnalyTexture(copy.GetPixels());
 
 		GetComponent<MapFromScreenshot>().GenMapBase();
-		GetComponent<MapFromScreenshot>().GenFloatingIsand();
+//		GetComponent<MapFromScreenshot>().GenFloatingIsand();
 		enabled = false;
 	}
 	

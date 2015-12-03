@@ -54,7 +54,8 @@ public class PlayerTouchspecBlock : MonoBehaviour {
 	void Suck(){
 		sucked_timer += Time.deltaTime;
 		transform.position = sucked_pos;
-		if(sucked_timer == SuckedTime)
+		if(sucked_timer == SuckedTime){
 			sucked_timer=0;sucked=false;
+		}
 	}
 }

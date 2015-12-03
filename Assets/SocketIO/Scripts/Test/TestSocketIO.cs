@@ -63,11 +63,12 @@ public class TestSocketIO : MonoBehaviour
 		socket.On("boop", TestBoop);
 		socket.On("error", TestError);
 		socket.On("close", TestClose);
-		socket.On("user_added", AddUserToWorld);
+//		socket.On("user_added", AddUserToWorld);
 		socket.On ("user_update_position", UpdateOtherPos);
-		socket.On ("user list", AddUserToWorld);
+//		socket.On ("user list", AddUserToWorld);
 		socket.On("map_modify", ModifyMap);
 		socket.On ("set_specblock", SetSpecBlock);
+		socket.On ("shotting", OtherShotting);
 
 		StartCoroutine("BeepBoop");
 //		StartCoroutine("SendPosition");
@@ -122,13 +123,9 @@ public class TestSocketIO : MonoBehaviour
 		data["p_x"] = ""+Player.transform.position.x;
 		data["p_y"] = ""+Player.transform.position.y;
 		data["p_z"] = ""+Player.transform.position.z;
-		data["rota_x"] = ""+Player.transform.rotation.x;
-		data["rota_y"] = ""+Player.transform.rotation.y;
-		data["rota_z"] = ""+Player.transform.rotation.z;
-		data["speed_x"] = ""+Player_rg.velocity.x;
-		data["speed_y"] = ""+Player_rg.velocity.y;
-		data["speed_z"] = ""+Player_rg.velocity.z;
-		
+		data["rota_x"] = ""+Player.transform.eulerAngles.x;
+		data["rota_y"] = ""+Player.transform.eulerAngles.y;
+		data["rota_z"] = ""+Player.transform.eulerAngles.z;
 		socket.Emit(UPDATE_POS, new JSONObject(data));
 		// wait 1 seconds and continue
 //		yield return new WaitForSeconds(0.1f);
@@ -154,6 +151,13 @@ public class TestSocketIO : MonoBehaviour
 		data["p_z"] = ""+position.z;
 		data["type"] = type.ToString();
 		socket.Emit("set_specblock", new JSONObject(data));
+	}
+
+	public void SendShotting(string targe_id){
+		Dictionary<string,string> data = new Dictionary<string ,string>();
+		data["id"] = ""+socket.sid;
+		data["targe"] = targe_id;
+		socket.Emit("shotting", new JSONObject(data));
 	}
 
 
@@ -222,11 +226,14 @@ public class TestSocketIO : MonoBehaviour
 	public void PerformUpdateP(Dictionary<string,string> data){
 		Vector3 n_position = new Vector3(float.Parse(data["p_x"]), float.Parse(data["p_y"]), float.Parse(data["p_z"]));
 		Vector3 n_ori_position = new Vector3(float.Parse(data["start_x"]), float.Parse(data["start_y"]), float.Parse(data["start_z"]));
-		Vector3 n_velocity = new Vector3(float.Parse(data["speed_x"]), float.Parse(data["speed_y"]), float.Parse(data["speed_z"]));
 
-		Quaternion n_rotation = Quaternion.Euler(180*float.Parse(data["rota_x"]), 180*float.Parse(data["rota_y"]), 180*float.Parse(data["rota_z"]));
+		Vector3 n_rotation = new Vector3(
+			float.Parse(data["rota_x"]),
+			float.Parse(data["rota_y"]),
+			float.Parse(data["rota_z"])
+			);
 		GameObject other;
-		
+
 		if(other_players.TryGetValue(data["id"], out other)){
 			Vector3 v= other.GetComponent<Rigidbody>().velocity;
 //			other.GetComponent<Rigidbody>().velocity = v;
@@ -236,12 +243,13 @@ public class TestSocketIO : MonoBehaviour
 //							ref n_velocity,
 //							float.Parse(data["excue_time"])/update_period);
 			data["excue_time"] = (float.Parse(data["excue_time"])+Time.deltaTime) + "";
-			if(float.Parse(data["excue_time"])<=update_period)
+//			Debug.Log(data["excue_time"]);
+			if(float.Parse(data["excue_time"])<=update_period && true)
 				other.transform.position = Vector3.Lerp(n_ori_position, n_position, float.Parse(data["excue_time"])/update_period);
 			else
 				other.transform.position = Vector3.Lerp(n_ori_position, n_position, 1f);
 //			other.transform.rotation= Quaternion.Slerp(other.transform.rotation, n_rotation, float.Parse(data["excue_time"])/update_period);
-			other.transform.rotation = n_rotation;
+			other.transform.eulerAngles = n_rotation;
 		}
 		
 
@@ -286,5 +294,12 @@ public class TestSocketIO : MonoBehaviour
 			world.SpecialBlockEff(WS, type, BlockSpecial.Owner.other);
 			break;
 		}
+	}
+
+	public void OtherShotting(SocketIOEvent e){
+		Dictionary<string,string> data =  e.data.ToDictionary();
+		GameObject go;
+		other_players.TryGetValue(data["id"], out go);
+		go.GetComponent<AutoAim>().setTarge(data["targe"]);
 	}
 }

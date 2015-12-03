@@ -26,6 +26,10 @@ public class movment_joystick : MonoBehaviour {
 	[SerializeField]
 	private float fly_total_time=0f;
 
+	[SerializeField]
+	float r_x,r_y,r_z;
+
+
 	bool touch_ground = true;
 	bool flying = false;
 
@@ -39,6 +43,7 @@ public class movment_joystick : MonoBehaviour {
 	
 	// Update is called once per frame Vertical
 	void Update () {
+
 		speed = BODY.velocity;
 		if (CrossPlatformInputManager.GetAxis ("Vertical") >0 || CrossPlatformInputManager.GetAxis ("Horizontal") > 0) {
 			if(speed.x < speed_cap && speed.z < speed_cap ){
@@ -69,7 +74,7 @@ public class movment_joystick : MonoBehaviour {
 		}
 		else{
 			if(fly_total_time>0 && !flying)
-				fly_total_time -= Time.deltaTime;
+				fly_total_time -= Time.deltaTime/2f;
 			else if(fly_total_time<0 && !flying){
 				fly_total_time = 0f;
 			}

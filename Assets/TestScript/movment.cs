@@ -28,10 +28,10 @@ public class movment : MonoBehaviour {
 
 
 
-//		if (touch_ground && Input.GetAxisRaw ("Jump")!=0) {
-//			BODY.AddForce (new Vector3 (transform.forward.x*movingspeed*rushspeed , 10 * jump_muti, transform.forward.z*movingspeed*rushspeed));
-//			touch_ground = false;
-//		}
+		if (Input.GetAxisRaw ("Jump")!=0 ) {
+			BODY.AddForce (new Vector3 (Vector3.up.x , Vector3.up.y *jump_muti, Vector3.up.z));
+			touch_ground = false;
+		}
 
 		transform.Rotate(Vector3.down * (-Input.GetAxis("Horizontal"))*movingspeed/5);
 

@@ -45,10 +45,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TestScript\MapGenTest\HSV2RGB2HSV.js" />
+     <Compile Include="Assets\KY_effects\Script\ConGUI.js" />
+     <Compile Include="Assets\KY_effects\Script\Lighting.js" />
      <None Include="Assets\SocketIO\JSONObject\readme.txt" />
      <None Include="Assets\Shaders\UnityVC\StandardVC.shader" />
      <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />
+     <None Include="Assets\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
      <None Include="Assets\SocketIO\Readme.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Shaders\UnityVC\UnityVC.cginc" />
