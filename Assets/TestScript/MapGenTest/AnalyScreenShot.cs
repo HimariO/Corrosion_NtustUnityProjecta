@@ -10,6 +10,8 @@ public class AnalyScreenShot : MonoBehaviour {
 	public int[,,] r_color_map = new int[160,90,3];
 	Color[] pixels;
 	Texture2D copy;
+
+	bool show;
 //	Texture2D after_process;
 	// Use this for initialization
 	void Start () {
@@ -38,7 +40,25 @@ public class AnalyScreenShot : MonoBehaviour {
 
 		GetComponent<MapFromScreenshot>().GenMapBase();
 //		GetComponent<MapFromScreenshot>().GenFloatingIsand();
-		enabled = false;
+
+
+		for(int i =0;i<pixels.Length; i++){
+			pixels[i] = Color.black;
+		}
+		
+		foreach(HashSet<int[]> group in r_edge_group){
+			float r_color = Random.Range(0f,1f);
+			float r_color_g = Random.Range(0f,1f);
+			float r_color_b = Random.Range(0f,1f);
+			Debug.Log("run:"+r_color+","+r_color_g+","+r_color_b);
+			foreach(int[] point in group){
+				pixels[point[1]*copy.width + point[0]] = new Color(r_color, r_color_g, r_color_b);
+			}
+		}
+		copy.SetPixels(pixels);
+		copy.Apply();
+		show = false;
+
 	}
 	
 	// Update is called once per frame
@@ -47,16 +67,14 @@ public class AnalyScreenShot : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		Texture2D a= Instantiate(screenshot);
-		a.SetPixels(pixels);
-		a.Apply();
-//		GUI.DrawTexture(new Rect(0, 0, 180, 320), copy);
+	
+		GUI.DrawTexture(new Rect(0, 0, 180, 320), copy);
 	}
 	
 
 	void AnalyTexture(Color[] colors){
 		float color_standar = 0.15f;
-		int thershold = (int)(colors.Length*0.005f);
+		int thershold = (int)(colors.Length*0.001f);
 
 		List<List<float[]>> pixel_data = new List<List<float[]>>(); //[y][x][hsv]
 
@@ -76,7 +94,7 @@ public class AnalyScreenShot : MonoBehaviour {
 		List<int[]> edge_position = new List<int[]>();
 		int[,] edge_map = new int[screenshot.height,screenshot.width]; //[y,x]
 
-		int[,] Lookup_Offset  = new int[,]{{1, 0}, {0, -1}, {0, 1}, {1, 1}, {1, -1}, {-1, 0}, {-1, -1}};
+		int[,] Lookup_Offset  = new int[,]{{1, 0}, {0, -1}, {0, 1}, {1, 1}};
 		Debug.Log (Lookup_Offset.GetLength(0));
 		while(true){
 			edge_position.Clear();
@@ -130,7 +148,7 @@ public class AnalyScreenShot : MonoBehaviour {
 				Debug.Log("remove fail");
 			}
 
-			Debug.Log("before:"+edge_position.Count+"group:"+group.Count);
+
 			foreach(int[] p in group){
 				try{
 					foreach(int[] arr in edge_position){
@@ -150,6 +168,7 @@ public class AnalyScreenShot : MonoBehaviour {
 		Debug.Log("find group:"+edge_grouped.Count);
 		r_edge_group = edge_grouped;
 
+		show = true;
 	}
 
 
