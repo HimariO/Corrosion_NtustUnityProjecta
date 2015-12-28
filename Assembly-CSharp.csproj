@@ -140,6 +140,9 @@
      <Compile Include="Assets\TestScript\PlayerStatus.cs" />
      <Compile Include="Assets\TestScript\SetURL.cs" />
      <Compile Include="Assets\TestScript\SpecCubeOnColl.cs" />
+     <Compile Include="Assets\TestScript\Stroage\ListWrapper.cs" />
+     <Compile Include="Assets\TestScript\Stroage\ReadFileUI.cs" />
+     <Compile Include="Assets\TestScript\Stroage\SaveLoad.cs" />
      <Compile Include="Assets\TestScript\Wall.cs" />
      <Compile Include="Assets\TestScript\apear.cs" />
      <Compile Include="Assets\TestScript\ballfollow.cs" />
@@ -175,17 +178,11 @@
      <None Include="Assets\Shaders\UnityVC\UnityVC.cginc" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\Glow.shader" />
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

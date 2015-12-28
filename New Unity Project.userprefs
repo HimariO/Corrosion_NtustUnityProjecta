@@ -1,32 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestScript/MapGenTest/MapFromScreenshot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestScript/Stroage/SaveLoad.cs">
     <Files>
-      <File FileName="Assets/TestScript/MapGenTest/MapFromScreenshot.cs" Line="100" Column="17" />
+      <File FileName="Assets/TestScript/MapGenTest/MapFromScreenshot.cs" Line="38" Column="7" />
       <File FileName="Assets/TestScript/MapGenTest/AnalyScreenShot.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/movment_joystick.cs" Line="1" Column="1" />
-      <File FileName="Assets/SocketIO/Scripts/Test/TestSocketIO.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/AutoAim.cs" Line="1" Column="1" />
-      <File FileName="Assets/voxeltut4/Modify.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/MapGenTest/DataBucket.cs" Line="1" Column="1" />
-      <File FileName="Assets/voxeltut4/PlayerTouchspecBlock.cs" Line="1" Column="1" />
-      <File FileName="Assets/voxeltut4/BlockSpecial.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/PlayerStatus.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/HandSwap.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestScript/movment.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/Stroage/SaveLoad.cs" Line="34" Column="15" />
+      <File FileName="Assets/TestScript/Stroage/ReadFileUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/Stroage/ListWrapper.cs" Line="10" Column="31" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>group</Value>
-          <Value>p</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/Himari/New Unity Project/Assets/TestScript/MapGenTest/MapFromScreenshot.cs" line="127" />
+      <Breakpoint file="/Users/Himari/New Unity Project/Assets/TestScript/MapGenTest/MapFromScreenshot.cs" line="25" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

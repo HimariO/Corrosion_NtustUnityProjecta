@@ -13,15 +13,18 @@ public class MapFromScreenshot : MonoBehaviour {
 	int chunk_size = 16;
 	int[,,] colorMap;
 	public int[,] cubMap ;
-	List<int[][]> edges_group;
+	List<List<int[]>> edge_group;
 	//[group, index, x or y]
 
 	// Use this for initialization
 	void Start() {
 		GameObject temp;
 		world = GetComponent<World>();
-		analy = GetComponent<AnalyScreenShot>();
-	
+//		analy = GetComponent<AnalyScreenShot>();
+		LoadDataFromF();
+
+		GenMapBase();
+//		GenFloatingIsand();
 	}
 	
 	// Update is called once per frame
@@ -30,9 +33,16 @@ public class MapFromScreenshot : MonoBehaviour {
 	}
 
 
+	public void LoadDataFromF(){
+		colorMap = SaveLoad.LoadColorMap();
+//		edge_group = SaveLoad.LoadEdgeGroup();
+		cubMap = SaveLoad.LoadEdgeMap();
+
+	}
+
 	public void GenMapBase(){
-		colorMap = analy.r_color_map;
-		cubMap = analy.r_edge_map;
+//		colorMap = analy.r_color_map;
+//		cubMap = analy.r_edge_map;
 
 
 		for(int y=start_y; y<start_y+50 ; y+=chunk_size){
@@ -89,7 +99,7 @@ public class MapFromScreenshot : MonoBehaviour {
 
 	public void GenFloatingIsand(){
 
-		foreach(HashSet<int[]> notgroups in analy.r_edge_group){
+		foreach(List<int[]> notgroups in edge_group){
 			int[][] groups = notgroups.ToArray();
 			System.Array.Sort(groups, 
 				(e1, e2)=> {

@@ -23,7 +23,7 @@ public class HandSwap : MonoBehaviour {
 		}
 
 		if(moving){
-			Debug.Log("loglog");
+//			Debug.Log("loglog");
 			transform.Translate(Vector3.left * Time.deltaTime*20);
 			moving_time+=Time.deltaTime;
 

@@ -48,16 +48,16 @@ public class movment_joystick : MonoBehaviour {
 		if (CrossPlatformInputManager.GetAxis ("Vertical") >0 || CrossPlatformInputManager.GetAxis ("Horizontal") > 0) {
 			if(speed.x < speed_cap && speed.z < speed_cap ){
 				vector = new Vector3 (transform.forward.x * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed, 0, transform.forward.z * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed);
-				BODY.AddForce (vector);
+				BODY.AddForce (vector*Time.deltaTime);
 				vector = new Vector3 (transform.right.x * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed, 0, transform.right.z * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed);
-				BODY.AddForce (vector);
+				BODY.AddForce (vector*Time.deltaTime);
 			}
 		}else if (CrossPlatformInputManager.GetAxis ("Vertical") <0 || CrossPlatformInputManager.GetAxis ("Horizontal") < 0) {
 			if(speed.x > -speed_cap && speed.z > -speed_cap ){
 				vector = new Vector3 (transform.forward.x * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed, 0, transform.forward.z * CrossPlatformInputManager.GetAxis ("Vertical") * movingspeed);
-				BODY.AddForce (vector);
+				BODY.AddForce (vector*Time.deltaTime);
 				vector = new Vector3 (transform.right.x * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed, 0, transform.right.z * CrossPlatformInputManager.GetAxis ("Horizontal") * movingspeed);
-				BODY.AddForce (vector);
+				BODY.AddForce (vector*Time.deltaTime);
 			}
 		}
 
@@ -67,7 +67,7 @@ public class movment_joystick : MonoBehaviour {
 			if(fly_total_time<fly_time_lime){
 				if(Mathf.Abs(speed.y) < speed_cap ){
 				vector = new Vector3 (0, transform.up.y * CrossPlatformInputManager.GetAxis ("Mouse Y") * jump_muti, 0);
-				BODY.AddForce (vector);
+					BODY.AddForce (vector*Time.deltaTime);
 				fly_total_time += Time.deltaTime;
 				}
 			}

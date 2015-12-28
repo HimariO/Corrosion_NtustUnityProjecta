@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class AnalyScreenShot : MonoBehaviour {
 
+	public bool Finished = false;
+
 	public Texture2D screenshot;
-	public List<HashSet<int[]>> r_edge_group;
+	public List<List<int[]>> r_edge_group;
 	public int[,] r_edge_map;
 	public int[,,] r_color_map = new int[160,90,3];
 	Color[] pixels;
@@ -38,19 +40,24 @@ public class AnalyScreenShot : MonoBehaviour {
 
 		AnalyTexture(copy.GetPixels());
 
-		GetComponent<MapFromScreenshot>().GenMapBase();
-//		GetComponent<MapFromScreenshot>().GenFloatingIsand();
+		SaveLoad.SaveColorMap(r_color_map);
+		SaveLoad.SaveEdgeGroup(r_edge_group);
+		SaveLoad.SaveEdgeMap(r_edge_map);
 
+		Finished = true;
 
+		// -------------------------------------for debug GUI ---------------------------------------------------------
 		for(int i =0;i<pixels.Length; i++){
 			pixels[i] = Color.black;
+			if(r_edge_map[i/copy.width, i%copy.width]==1)
+				pixels[i] = Color.white;
 		}
 		
-		foreach(HashSet<int[]> group in r_edge_group){
+		foreach(List<int[]> group in r_edge_group){
 			float r_color = Random.Range(0f,1f);
 			float r_color_g = Random.Range(0f,1f);
 			float r_color_b = Random.Range(0f,1f);
-			Debug.Log("run:"+r_color+","+r_color_g+","+r_color_b);
+
 			foreach(int[] point in group){
 				pixels[point[1]*copy.width + point[0]] = new Color(r_color, r_color_g, r_color_b);
 			}
@@ -59,6 +66,7 @@ public class AnalyScreenShot : MonoBehaviour {
 		copy.Apply();
 		show = false;
 
+		//-------------------------------------------------------------------------------------------------------------
 	}
 	
 	// Update is called once per frame
@@ -133,10 +141,15 @@ public class AnalyScreenShot : MonoBehaviour {
 
 		r_edge_map = edge_map;
 
-		List<HashSet<int[]>> edge_grouped = new List<HashSet<int[]>>();
+		List<List<int[]>> edge_grouped = new List<List<int[]>>();
 		while(edge_position.Count>0){
 			int[] coord = edge_position[0];
-			HashSet<int[]> group = FindAround(coord, new HashSet<int[]>{coord});
+			List<int[]> group = new List<int[]>();
+			List<int[]> cameform = new List<int[]>();
+
+			Debug.Log("------------Search start------------");
+			FindAround(coord, ref cameform,ref group);
+			Debug.Log("------------Search end------------");
 
 			if(group.Count>thershold){
 				edge_grouped.Add(group);
@@ -145,7 +158,7 @@ public class AnalyScreenShot : MonoBehaviour {
 			try{
 				edge_position.Remove(coord);}
 			catch{
-				Debug.Log("remove fail");
+				Debug.LogError("remove fail");
 			}
 
 
@@ -159,9 +172,12 @@ public class AnalyScreenShot : MonoBehaviour {
 					}
 				}
 				catch{
-					Debug.Log("remove fail in group");
+					Debug.LogError("remove fail in group");
 				}
 			}
+
+
+			cameform.Clear();
 			Debug.Log("after:"+edge_position.Count);
 		}
 
@@ -172,40 +188,47 @@ public class AnalyScreenShot : MonoBehaviour {
 	}
 
 
-	HashSet<int[]> FindAround(int[] start_pos, HashSet<int[]> camefrom){
+	void FindAround(int[] start_pos, ref List<int[]> camefrom,ref List<int[]> Allpos){
 		//FindAround({x,y}, list[{x,y},{x,y}...all edge coordinate], list[{x,y},...edges alreay go through])
-		int[,] offset  = new int[,]{{1, 0}, {0, -1}, {-1, 0}, {0, 1}, {-1, 1}, {-1, -1}, {1, -1}, {1, 1}};
-		HashSet<int[]> AllPos = new HashSet<int[]>{start_pos};
+		int[,] offset  = new int[,]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; //, {-1, 1}, {-1, -1}, {1, -1}, {1, 1}
+//		HashSet<int[]> AllPos = new HashSet<int[]>{start_pos};
+		Allpos.Add(start_pos);
+		camefrom.Add(start_pos);
 		int x = start_pos[0], y = start_pos[1];
-		
-		if(camefrom.Count<=1){ // if this is startpoint
-			try{
-				if(r_edge_map[y+offset[0,1], x+offset[0,0]] == 0
-				   && r_edge_map[y+offset[1,1], x+offset[1,0]] == 0
-				   && r_edge_map[y+offset[2,1], x+offset[2,0]] == 0
-				   && r_edge_map[y+offset[3,1], x+offset[3,0]] == 0)
-				return new HashSet<int[]>{};
-			}catch{}
-		}
-		
-		for(int i=0; i<offset.GetLength(0); i++){
-			int[] n_p = new int[]{x+offset[i,0], y+offset[i,1]};
 
+
+		Debug.Log("Debug Start("+x+","+y);
+		for(int i=0; i<offset.GetLength(0); i++){
+
+			int[] n_p = new int[]{x+offset[i,0], y+offset[i,1]};
 			bool contain = false;
+
 			foreach(int[] cam in camefrom)
-				if(cam[0]==n_p[0] && cam[1]==cam[1]){
+				if(cam[0]==n_p[0] && n_p[1]==cam[1]){
+	
 					contain = true;break;
 				}
+
 			if(!contain){
 				try{
 					if(r_edge_map[n_p[1], n_p[0]] == 1){
-						camefrom.UnionWith(AllPos);
-						AllPos.UnionWith(FindAround(n_p, camefrom));
+						if(offset[i,1]!=0){
+							Debug.LogError("find in up ro down!!");
+							Debug.LogError("("+x+","+y+")>("+offset[i,0]+","+offset[i,1]);
+
+						}
+
+						Debug.Log("Allpos bef:"+Allpos.Count);
+						Allpos.Add(n_p);
+
+						FindAround(n_p, ref camefrom, ref Allpos);
+						Debug.Log("Allpos aft:"+Allpos.Count);
+						
 					}
 				}catch{continue;}
 			}
 		}
-		return AllPos;
+//		return AllPos;
 	}
 
 
