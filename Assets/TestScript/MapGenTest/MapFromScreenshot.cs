@@ -17,6 +17,14 @@ public class MapFromScreenshot : MonoBehaviour {
 	//[group, index, x or y]
 	void Start(){
 		LoadAndGen();
+
+		AnalyScreenShot ASS = GetComponent<AnalyScreenShot>();
+		if(ASS!=null && ASS.enabled){ //try to move map infront camera(in map creating page)
+			
+			transform.position =  new Vector3(0, 0,0);
+			transform.eulerAngles = new Vector3(-59f, -26f, -90f);
+			transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+		}
 	}
 
 	// Update is called once per frame

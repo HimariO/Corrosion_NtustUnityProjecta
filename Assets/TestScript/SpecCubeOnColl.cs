@@ -18,11 +18,7 @@ public class SpecCubeOnColl : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 		if(collision.gameObject.tag == "Player" ){
-			WorldPos WS = new WorldPos((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
-
-			world.SpecialBlockEff(WS, type, BlockSpecial.Owner.me);
-			socket.SendSetSpecBlock(WS, type);
-
+			collision.gameObject.GetComponent<PlayerStatus>().GetAitem(type);
 		}
 	}
 }

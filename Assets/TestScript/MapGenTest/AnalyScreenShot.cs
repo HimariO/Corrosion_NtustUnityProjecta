@@ -51,11 +51,9 @@ public class AnalyScreenShot : MonoBehaviour {
 		Finished = true;
 
 		MapFromScreenshot MFS = GetComponent<MapFromScreenshot>();
-		if(MFS!=null){ //try to generate map(in map creating page)
-
-//			MFS.LoadAndGen();
+		if(MFS!=null && MFS!=null){ //try to move map infront camera(in map creating page)
 			
-			transform.position =  new Vector3(-113, -190, -354);
+			transform.position =  new Vector3(-113f, -190f, -354f);
 			transform.eulerAngles = new Vector3(-59f/360f, -26f/360f, -90f/360f);
 			transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 		}
