@@ -14,12 +14,13 @@ public class AnalyScreenShot : MonoBehaviour {
 	Texture2D copy;
 
 	bool show;
-//	Texture2D after_process;
-	// Use this for initialization
-	void Start () {
-//		 dscreenshot.Resize(115,204);
-//		screenshot.Apply();
-	
+
+	void Start(){
+//		StartProcess();
+	}
+
+
+	public void StartProcess () {
 
 //		TextureScale.Bilinear (screenshot, 90, 160);
 		copy = Instantiate(screenshot);
@@ -40,12 +41,24 @@ public class AnalyScreenShot : MonoBehaviour {
 
 		AnalyTexture(copy.GetPixels());
 
-		SaveLoad.SaveColorMap(r_color_map);
-		SaveLoad.SaveEdgeGroup(r_edge_group);
-		SaveLoad.SaveEdgeMap(r_edge_map);
+		try{
+			SaveLoad.SaveColorMap(r_color_map);
+			SaveLoad.SaveEdgeMap(r_edge_map);
+			SaveLoad.SaveEdgeGroup(r_edge_group);
+		}catch{};
+
 
 		Finished = true;
 
+		MapFromScreenshot MFS = GetComponent<MapFromScreenshot>();
+		if(MFS!=null){ //try to generate map(in map creating page)
+
+			MFS.LoadAndGen();
+			
+			transform.position =  new Vector3(-113, -190, -354);
+			transform.eulerAngles = new Vector3(-59f/360f, -26f/360f, -90f/360f);
+			transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+		}
 		// -------------------------------------for debug GUI ---------------------------------------------------------
 		for(int i =0;i<pixels.Length; i++){
 			pixels[i] = Color.black;
@@ -158,7 +171,7 @@ public class AnalyScreenShot : MonoBehaviour {
 			try{
 				edge_position.Remove(coord);}
 			catch{
-				Debug.LogError("remove fail");
+				Debug.Log("remove fail");
 			}
 
 
@@ -172,7 +185,7 @@ public class AnalyScreenShot : MonoBehaviour {
 					}
 				}
 				catch{
-					Debug.LogError("remove fail in group");
+					Debug.Log("remove fail in group");
 				}
 			}
 
@@ -213,8 +226,8 @@ public class AnalyScreenShot : MonoBehaviour {
 				try{
 					if(r_edge_map[n_p[1], n_p[0]] == 1){
 						if(offset[i,1]!=0){
-							Debug.LogError("find in up ro down!!");
-							Debug.LogError("("+x+","+y+")>("+offset[i,0]+","+offset[i,1]);
+							Debug.Log("find in up ro down!!");
+							Debug.Log("("+x+","+y+")>("+offset[i,0]+","+offset[i,1]);
 
 						}
 

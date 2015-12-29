@@ -17,7 +17,7 @@ public class PlayerStatus : MonoBehaviour {
 	}
 
 	void CheckOutOfBound (){
-		if(transform.position.y<-20){
+		if(transform.position.y<-20 || transform.position.y>50){
 			transform.position = new Vector3(10f, 10f, 10f);
 		}
 	}

@@ -12,17 +12,21 @@ public static class SaveLoad {
 	
 	//it's static so we can call it from anywhere
 	public static void SaveEdgeGroup(List<List<int[]>> data) {
-		List<ListWrapper> container = new List<ListWrapper>();
+		List<int[,]> container = new List<int[,]>();
 
 		foreach(List<int[]> ele in data){
-			container.Add(new ListWrapper(ele));
+			int[,] eleA = new int[ele.Count, 2];
+			for(int i=0;i<ele.Count; i++){
+				eleA[i,0] = ele[i][0];
+				eleA[i,1] = ele[i][1];
+			}
 		}
 
 //		SaveLoad.savedGames.Add(Game.current);
 		BinaryFormatter bf = new BinaryFormatter();
 		//Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
 		FileStream file = File.Create (Application.persistentDataPath + "/EdgeGroup.gd"); //you can call it anything you want
-		bf.Serialize(file, data);
+		bf.Serialize(file, container);
 //		Debug.Log(bf.);
 		file.Close();
 	}   
@@ -31,11 +35,16 @@ public static class SaveLoad {
 		if(File.Exists(Application.persistentDataPath + "/EdgeGroup.gd")) {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(Application.persistentDataPath + "/EdgeGroup.gd", FileMode.Open);
-			List<ListWrapper> readHash = (List<ListWrapper>)bf.Deserialize(file);
+			List<int[,]> readHash =(List<int[,]>) bf.Deserialize(file);
 			List<List<int[]>> container = new List<List<int[]>>();
 
-			foreach(ListWrapper ele in readHash)
-				container.Add(ele.data);
+			foreach(int[,] ele in readHash){
+				List<int[]> temp = new List<int[]>();
+				for(int i=0;i<ele.GetLength(0);i++){
+					temp.Add(new int[]{ele[i,0], ele[i,1]});
+				}
+				container.Add(temp);
+			}
 
 			file.Close();
 			return container;

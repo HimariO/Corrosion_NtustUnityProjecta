@@ -21,9 +21,10 @@ public class MapFromScreenshot : MonoBehaviour {
 		GameObject temp;
 		world = GetComponent<World>();
 //		analy = GetComponent<AnalyScreenShot>();
-		LoadDataFromF();
 
-		GenMapBase();
+		LoadAndGen();
+
+//		GenMapBase();
 //		GenFloatingIsand();
 	}
 	
@@ -33,9 +34,19 @@ public class MapFromScreenshot : MonoBehaviour {
 	}
 
 
+	public void LoadAndGen(){
+		LoadDataFromF();
+		if(colorMap!=null && cubMap!=null){
+			GenMapBase();	
+		}
+
+		if(edge_group!=null)
+			GenFloatingIsand();
+	}
+
 	public void LoadDataFromF(){
 		colorMap = SaveLoad.LoadColorMap();
-//		edge_group = SaveLoad.LoadEdgeGroup();
+		edge_group = SaveLoad.LoadEdgeGroup();
 		cubMap = SaveLoad.LoadEdgeMap();
 
 	}
