@@ -271,6 +271,7 @@
      <Compile Include="Assets\TestScript\AutoAim.cs" />
      <Compile Include="Assets\TestScript\CubeOnTouch.cs" />
      <Compile Include="Assets\TestScript\HandSwap.cs" />
+     <Compile Include="Assets\TestScript\LevelControl\GenMapTestControl.cs" />
      <Compile Include="Assets\TestScript\LevelControl\MenuControl.cs" />
      <Compile Include="Assets\TestScript\MapGenTest\AnalyScreenShot.cs" />
      <Compile Include="Assets\TestScript\MapGenTest\DataBucket.cs" />

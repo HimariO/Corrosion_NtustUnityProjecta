@@ -20,6 +20,7 @@ public static class SaveLoad {
 				eleA[i,0] = ele[i][0];
 				eleA[i,1] = ele[i][1];
 			}
+			container.Add(eleA);
 		}
 
 //		SaveLoad.savedGames.Add(Game.current);
@@ -37,11 +38,12 @@ public static class SaveLoad {
 			FileStream file = File.Open(Application.persistentDataPath + "/EdgeGroup.gd", FileMode.Open);
 			List<int[,]> readHash =(List<int[,]>) bf.Deserialize(file);
 			List<List<int[]>> container = new List<List<int[]>>();
-
+			Debug.Log("ovehere");
 			foreach(int[,] ele in readHash){
 				List<int[]> temp = new List<int[]>();
 				for(int i=0;i<ele.GetLength(0);i++){
 					temp.Add(new int[]{ele[i,0], ele[i,1]});
+					Debug.Log (ele[i,0]+","+ ele[i,1]);
 				}
 				container.Add(temp);
 			}
@@ -78,22 +80,24 @@ public static class SaveLoad {
 
 
 	public static void SaveEdgeMap(int[,] data) {
-		
-		//		SaveLoad.savedGames.Add(Game.current);
 		BinaryFormatter bf = new BinaryFormatter();
-		//Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
-		FileStream file = File.Create (Application.persistentDataPath + "/EdgeGroup.gd"); //you can call it anything you want
+
+		FileStream file = File.Create (Application.persistentDataPath + "/EdgeMap.gd"); //you can call it anything you want
 		bf.Serialize(file, data);
-		//		Debug.Log(bf.);
+
 		file.Close();
 	}   
 	
 	public static int[,] LoadEdgeMap() {
-		if(File.Exists(Application.persistentDataPath + "/EdgeGroup.gd")) {
+		Debug.Log (Application.persistentDataPath);
+
+		if(File.Exists(Application.persistentDataPath + "/EdgeMap.gd")) {
+
 			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/EdgeGroup.gd", FileMode.Open);
+			FileStream file = File.Open(Application.persistentDataPath + "/EdgeMap.gd", FileMode.Open);
+
 			int[,] readHash = (int[,])bf.Deserialize(file);
-			
+
 			file.Close();
 			return readHash;
 		}

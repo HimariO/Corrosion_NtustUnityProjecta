@@ -15,19 +15,10 @@ public class MapFromScreenshot : MonoBehaviour {
 	public int[,] cubMap ;
 	List<List<int[]>> edge_group;
 	//[group, index, x or y]
-
-	// Use this for initialization
-	void Start() {
-		GameObject temp;
-		world = GetComponent<World>();
-//		analy = GetComponent<AnalyScreenShot>();
-
+	void Start(){
 		LoadAndGen();
-
-//		GenMapBase();
-//		GenFloatingIsand();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -35,6 +26,8 @@ public class MapFromScreenshot : MonoBehaviour {
 
 
 	public void LoadAndGen(){
+		analy = GetComponent<AnalyScreenShot>();
+		world = GetComponent<World>();
 		LoadDataFromF();
 		if(colorMap!=null && cubMap!=null){
 			GenMapBase();	
@@ -42,12 +35,32 @@ public class MapFromScreenshot : MonoBehaviour {
 
 		if(edge_group!=null)
 			GenFloatingIsand();
+
+		if(edge_group==null)
+			Debug.LogError("edgegroup not found");
+	}
+
+	public void LoadAndGenTest(){
+		analy = GetComponent<AnalyScreenShot>();
+		world = GetComponent<World>();
+
+		colorMap = analy.r_color_map;
+		edge_group = analy.r_edge_group;
+		cubMap = analy.r_edge_map;
+
+	
+			GenMapBase();	
+	
+			GenFloatingIsand();
+		
+		if(edge_group==null)
+			Debug.LogError("edgegroup not found");
 	}
 
 	public void LoadDataFromF(){
 		colorMap = SaveLoad.LoadColorMap();
-		edge_group = SaveLoad.LoadEdgeGroup();
 		cubMap = SaveLoad.LoadEdgeMap();
+		edge_group = SaveLoad.LoadEdgeGroup();
 
 	}
 
