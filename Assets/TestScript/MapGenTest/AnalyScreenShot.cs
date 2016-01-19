@@ -12,11 +12,12 @@ public class AnalyScreenShot : MonoBehaviour {
 	public int[,,] r_color_map = new int[160,90,3];
 	Color[] pixels;
 	Texture2D copy;
-
+	MapFromScreenshot MFS;
 	bool show;
 
 	void Start(){
 //		StartProcess();
+		MFS = GetComponent<MapFromScreenshot>();
 	}
 
 
@@ -50,7 +51,7 @@ public class AnalyScreenShot : MonoBehaviour {
 
 		Finished = true;
 
-		MapFromScreenshot MFS = GetComponent<MapFromScreenshot>();
+		MFS = GetComponent<MapFromScreenshot>();
 		if(MFS!=null && MFS!=null){ //try to move map infront camera(in map creating page)
 			
 			transform.position =  new Vector3(-113f, -190f, -354f);
@@ -82,12 +83,19 @@ public class AnalyScreenShot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		if(MFS!=null){ //try to move map infront camera(in map creating page)
+			if(Mathf.Abs( transform.position.x-113)>1){
+			transform.position =  new Vector3(-113f, -190f, -354f);
+			transform.eulerAngles = new Vector3(-59f/360f, -26f/360f, -90f/360f);
+			transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+			}
+		}
 	}
 
 	void OnGUI(){
 	
-		GUI.DrawTexture(new Rect(0, 0, 180, 320), copy);
+//		GUI.DrawTexture(new Rect(0, 0, 180, 320), copy);
 	}
 	
 

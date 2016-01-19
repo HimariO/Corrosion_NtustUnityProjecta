@@ -7,18 +7,20 @@ public class PlayerStatus : MonoBehaviour {
 	public int PlayerHealth = 200;
 	private bool isplayer = false;
 
-	Image SuckIMG, BumpIMG;
+	Image SuckIMG, BumpIMG,TeleportIMG;
 	World world;
 	TestSocketIO socket;
 
 	public int Suck_item = 0;
 	public int Bump_item = 0;
+	public int Teleport_item = 0;
 
 	// Use this for initialization
 	void Start () {
 		isplayer = tag=="Player" ? true : false ;
 		SuckIMG= GameObject.Find("ItemSuck").GetComponent<Image>();
 		BumpIMG = GameObject.Find("ItemBump").GetComponent<Image>();
+		TeleportIMG = GameObject.Find("ItemMine").GetComponent<Image>();
 		world = GameObject.Find("WorldStartHere").GetComponent<World>();
 		socket = GameObject.Find("ConnectServer").GetComponent<TestSocketIO>();
 	}
@@ -54,6 +56,19 @@ public class PlayerStatus : MonoBehaviour {
 				Bump_item--;
 			}
 		}else if(BumpIMG.enabled && Bump_item<=0){BumpIMG.enabled = false;}
+
+		if(Teleport_item>0){
+			if(!TeleportIMG.enabled){
+				TeleportIMG.enabled = true;
+			}
+			if(CrossPlatformInputManager.GetButton("ItemMine")){
+				WorldPos WS = new WorldPos((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
+				
+				world.SpecialBlockEff_mod(WS, BlockSpecial.Specal_type.Teleport, BlockSpecial.Owner.me);
+				socket.SendSetSpecBlock(WS, BlockSpecial.Specal_type.Teleport);
+				Teleport_item--;
+			}
+		}else if(TeleportIMG.enabled && Teleport_item<=0){TeleportIMG.enabled = false;}
 	}
 
 
@@ -65,6 +80,7 @@ public class PlayerStatus : MonoBehaviour {
 	void CheckOutOfBound (){
 		if(transform.position.y<-20 || transform.position.y>70){
 			transform.position = new Vector3(10f, 10f, 10f);
+			gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
 		}
 	}
 
@@ -91,6 +107,9 @@ public class PlayerStatus : MonoBehaviour {
 			break;
 		case BlockSpecial.Specal_type.Suck:
 			Suck_item++;
+			break;
+		case BlockSpecial.Specal_type.Teleport:
+			Teleport_item++;
 			break;
 		}
 	}

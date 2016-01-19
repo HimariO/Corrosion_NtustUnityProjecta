@@ -43,7 +43,7 @@ public static class SaveLoad {
 				List<int[]> temp = new List<int[]>();
 				for(int i=0;i<ele.GetLength(0);i++){
 					temp.Add(new int[]{ele[i,0], ele[i,1]});
-					Debug.Log (ele[i,0]+","+ ele[i,1]);
+//					Debug.Log (ele[i,0]+","+ ele[i,1]);
 				}
 				container.Add(temp);
 			}

@@ -1,11 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestScript/PlayerStatus.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/voxeltut4/PlayerTouchspecBlock.cs">
     <Files>
-      <File FileName="Assets/TestScript/PlayerStatus.cs" Line="40" Column="17" />
-      <File FileName="Assets/voxeltut4/PlayerTouchspecBlock.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/PlayerStatus.cs" Line="61" Column="1" />
+      <File FileName="Assets/voxeltut4/PlayerTouchspecBlock.cs" Line="28" Column="15" />
       <File FileName="Assets/TestScript/SpecCubeOnColl.cs" Line="1" Column="1" />
       <File FileName="Assets/TestScript/AutoAim.cs" Line="1" Column="1" />
+      <File FileName="Assets/discoAction.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/Modify.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/MapGenTest/MapFromScreenshot.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/Stroage/SaveLoad.cs" Line="1" Column="1" />
+      <File FileName="Assets/SocketIO/Scripts/Test/TestSocketIO.cs" Line="1" Column="1" />
+      <File FileName="Assets/voxeltut4/World.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestScript/MapGenTest/AnalyScreenShot.cs" Line="24" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

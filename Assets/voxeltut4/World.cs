@@ -8,6 +8,7 @@ public class World : MonoBehaviour {
 
     public Dictionary<WorldPos, Chunk> chunks = new Dictionary<WorldPos, Chunk>();
     public GameObject chunkPrefab;
+	public GameObject specialDelivery;
 
     void Start()
     {
@@ -220,5 +221,18 @@ public class World : MonoBehaviour {
 
 		SetSpecalBlockS(points, blocktype, owner);
 
+	}
+
+
+	public void SpecialBlockEff_mod(WorldPos position, BlockSpecial.Specal_type blocktype, BlockSpecial.Owner owner){
+
+		for(int i=0;i<10;i++){
+			float r_x = Random.Range(-10, 10);
+			float r_y = Random.Range(-10, 10);
+			float r_z = Random.Range(-10, 10);
+
+			Instantiate(specialDelivery, new Vector3(position.x+r_x,position.y+r_y,position.z+r_z), specialDelivery.transform.rotation);
+		}
+		
 	}
 }

@@ -24,7 +24,9 @@ public class PlayerTouchspecBlock : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		
+		if(collision.transform.tag=="Mine")
+			Teleport();
+
 
 		foreach(ContactPoint cp in collision.contacts){
 			Block block = world.GetBlock((int)cp.point.x, (int)cp.point.y, (int)cp.point.z);
@@ -57,5 +59,19 @@ public class PlayerTouchspecBlock : MonoBehaviour {
 		if(sucked_timer == SuckedTime){
 			sucked_timer=0;sucked=false;
 		}
+	}
+
+	void Teleport(){
+		while(true){
+			float r_x = Random.Range(-50, 50);
+			float r_y = Random.Range(-50, 50);
+			float r_z = Random.Range(-50, 50);
+
+			if(!(world.GetBlock((int)(transform.position.x+r_x), (int)(transform.position.y+r_y), (int)(transform.position.z+r_z)) is BlockAir));{
+				transform.position = new Vector3(transform.position.x+r_x,transform.position.y+r_y,transform.position.z+r_z);
+				break;
+			}
+		}
+
 	}
 }

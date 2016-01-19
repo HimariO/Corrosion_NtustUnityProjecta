@@ -38,7 +38,7 @@ public class MapFromScreenshot : MonoBehaviour {
 		world = GetComponent<World>();
 		LoadDataFromF();
 		if(colorMap!=null && cubMap!=null){
-			GenMapBase();	
+			StartCoroutine(GenMapBase());	
 		}
 
 		if(edge_group!=null)
@@ -57,7 +57,7 @@ public class MapFromScreenshot : MonoBehaviour {
 		cubMap = analy.r_edge_map;
 
 	
-			GenMapBase();	
+		StartCoroutine(GenMapBase());
 	
 			GenFloatingIsand();
 		
@@ -72,10 +72,10 @@ public class MapFromScreenshot : MonoBehaviour {
 
 	}
 
-	public void GenMapBase(){
+	IEnumerator GenMapBase(){
 //		colorMap = analy.r_color_map;
 //		cubMap = analy.r_edge_map;
-
+		Debug.Log ("Coroutine");
 
 		for(int y=start_y; y<start_y+50 ; y+=chunk_size){
 			for(int z=start_z; z<start_z+cubMap.GetLength(0) ; z+= chunk_size){
@@ -110,21 +110,24 @@ public class MapFromScreenshot : MonoBehaviour {
 						world.SetBlock(x,y,z, new ColorBlock(c));
 					}
 
-					if(x==0 
-						|| (x==cubMap.GetLength(1)-1)
-						|| (z==cubMap.GetLength(0))
-						|| (z==0)
-						){
-						Color c = new Color(
-							(float)(colorMap[z,x,0])/255f, 
-							(float)(colorMap[z,x,1])/255f,
-							(float)(colorMap[z,x,2])/255f
-							, 1);
-						world.SetBlock(x,y,z, new ColorBlock(c));
-					}
+//					if(x==0 
+//						|| (x==cubMap.GetLength(1)-1)
+//						|| (z==cubMap.GetLength(0))
+//						|| (z==0)
+//						){
+//						Color c = new Color(
+//							(float)(colorMap[z,x,0])/255f, 
+//							(float)(colorMap[z,x,1])/255f,
+//							(float)(colorMap[z,x,2])/255f
+//							, 1);
+//						world.SetBlock(x,y,z, new ColorBlock(c));
+//					}
 				}
 			}
+
+			yield return new WaitForSeconds(0.2f);
 		}
+//		yield return;
 	}
 
 	float time=0f;

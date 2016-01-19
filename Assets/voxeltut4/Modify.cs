@@ -38,7 +38,7 @@ public class Modify : MonoBehaviour
 		if (prefab_pos!= null){
 			for(int i=0;i<prefab_pos.Count;i++){
 				GameObject temp;
-				int r= Random.Range(0,Spec_Block.Length*3);
+				int r= Random.Range(0,Spec_Block.Length*4);
 				if(r>=Spec_Block.Length){
 					temp = Instantiate(Explosion_Block, prefab_pos[i], Explosion_Block.transform.rotation) as GameObject;
 					socket.SendModifyMap(prefab_pos[i],"BlockMap");

@@ -291,7 +291,7 @@ public class TestSocketIO : MonoBehaviour
 			break;
 		case "Teleport":
 			type = BlockSpecial.Specal_type.Teleport;
-			world.SpecialBlockEff(WS, type, BlockSpecial.Owner.other);
+			world.SpecialBlockEff_mod(WS, type, BlockSpecial.Owner.other);
 			break;
 		}
 	}
